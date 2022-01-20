@@ -1,6 +1,18 @@
 import Head from "next/head"
-import Image from "next/image"
 
 export default function Home() {
-  return <h1>home</h1>
+  return (
+    <div>
+      <Head>
+        <title>Pokepedia</title>
+        <meta
+          name="description"
+          content="Managed and distributed by Oak Pokémon Research Lab"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <h1>Hello, Pokepedia!</h1>
+    </div>
+  )
 }
