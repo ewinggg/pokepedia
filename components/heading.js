@@ -3,7 +3,7 @@ import If from "./if"
 import styled from "@emotion/styled"
 
 const StyledHeading = styled.h1`
-  color: var(--color-dark-black);
+  color: inherit;
 `
 
 const Heading = ({ children, level, style }) => {
