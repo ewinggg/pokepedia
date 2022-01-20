@@ -2,22 +2,17 @@ import { css } from "@emotion/react"
 
 const globalStyles = css`
   html,
-  body {
-    padding: 0;
-    margin: 0;
-  }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
-    line-height: 1;
-  }
+  body,
+  ul,
+  ol,
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
+    padding: 0;
     margin: 0;
-    font-size: 100%;
   }
   a {
     color: inherit;
