@@ -7,7 +7,7 @@ const StyledList = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 35px;
   flex-wrap: wrap;
 `
 
@@ -16,7 +16,7 @@ const PokemonList = ({ pokemons }) => (
     <StyledList>
       {
         // Iterate each pokemon from pokemons
-        pokemons.map((pokemon) => (
+        pokemons?.map((pokemon) => (
           <PokemonItem pokemon={pokemon} key={pokemon.id} />
         ))
       }
