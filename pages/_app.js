@@ -1,5 +1,11 @@
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import { Global } from "@emotion/react"
+import globalStyles from "../styles/global-styles"
 
-export default MyApp
+const App = ({ Component, pageProps }) => (
+  <>
+    <Global styles={globalStyles} />
+    <Component {...pageProps} />
+  </>
+)
+
+export default App
