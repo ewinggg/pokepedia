@@ -2,11 +2,15 @@ import PropTypes from "prop-types"
 import If from "./if"
 import PokemonItem from "./pokemon-item"
 import styled from "@emotion/styled"
+import media from "../styles/media"
 
 const StyledList = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${media.xs} {
+    justify-content: space-between;
+  }
   gap: 35px;
   flex-wrap: wrap;
 `
