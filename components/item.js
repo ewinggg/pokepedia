@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import styled from "@emotion/styled"
 
-export const StyledItem = styled.li``
+const StyledItem = styled.li``
 
 const Item = forwardRef((props, ref) => {
   const { children, style, ...rest } = props
