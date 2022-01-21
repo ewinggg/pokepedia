@@ -14,6 +14,7 @@ const baseMainStyle = css`
   display: flex;
   flex-direction: column;
   gap: 35px;
+  width: 100%;
 `
 
 const Layout = ({ children }) => (
