@@ -1,16 +1,12 @@
-const useColors = (flag = 0) => {
-  const lightColors = [
-    "var(--color-light-purple)",
-    "var(--color-light-cyan)",
-    "var(--color-light-green)",
-  ]
-  const darkColors = [
-    "var(--color-dark-purple)",
-    "var(--color-dark-cyan)",
-    "var(--color-dark-green)",
-  ]
+import { darkColors, lightColors } from "../styles/colors"
 
-  return { light: lightColors[flag], dark: darkColors[flag] }
+const useColors = (flag = 0) => {
+  const mappers = ["purple", "cyan", "green"]
+
+  const light = lightColors[mappers[flag]]
+  const dark = darkColors[mappers[flag]]
+
+  return { light, dark }
 }
 
 export default useColors
