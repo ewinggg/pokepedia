@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import styled from "@emotion/styled"
@@ -9,7 +11,7 @@ export const StyledCard = styled.div`
   box-shadow: 5px 5px 1px 4px var(--dark-green);
   border-width: ${({ border }) => border && `${border}px`};
   border-style: ${({ border }) => border && "solid"};
-  border-color: ${({ brColor }) => brColor ?? "var(--dark-white)"};
+  border-color: ${({ brColor }) => brColor ?? "var(--dark-green)"};
   background-color: ${({ bgColor }) => bgColor ?? "var(--dark-white)"};
   border-radius: 20px;
   padding-top: ${({ pt }) => pt && `${pt}px`};
@@ -27,8 +29,8 @@ const Card = forwardRef((props, ref) => {
   const { children, contentStyle, style, ...rest } = props
 
   return (
-    <StyledCard ref={ref} className={style} {...rest}>
-      <div className={contentStyle}>{children}</div>
+    <StyledCard ref={ref} css={style} {...rest}>
+      <div css={contentStyle}>{children}</div>
     </StyledCard>
   )
 })

@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import styled from "@emotion/styled"
@@ -11,7 +13,7 @@ const Item = forwardRef((props, ref) => {
   const { children, style, ...rest } = props
 
   return (
-    <StyledItem ref={ref} className={style} {...rest}>
+    <StyledItem ref={ref} css={style} {...rest}>
       {children}
     </StyledItem>
   )

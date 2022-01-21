@@ -5,7 +5,7 @@ import Card from "./card"
 import If from "./if"
 import Heading from "./heading"
 import useColors from "../hooks/useColors"
-import { css } from "@emotion/css"
+import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 
 const cardContentStyle = css`
@@ -62,7 +62,6 @@ const headingStyle = css`
 `
 
 const PokemonCard = ({ pokemon }) => {
-  // Get random color based on pokemon id
   const { light, dark } = useColors(0)
 
   return (
