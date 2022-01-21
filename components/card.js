@@ -37,8 +37,8 @@ const Card = forwardRef((props, ref) => {
 
 Card.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
-  contentStyle: PropTypes.string,
-  style: PropTypes.string,
+  contentStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 }
 
 export default Card
