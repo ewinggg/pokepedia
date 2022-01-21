@@ -3,7 +3,7 @@ import Container from "./container"
 import Topbar from "./topbar"
 import styled from "@emotion/styled"
 
-export const StyledLayout = styled.div`
+const StyledLayout = styled.div`
   min-height: 100vh;
   height: 100%;
 `

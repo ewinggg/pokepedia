@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import media from "../styles/media"
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
