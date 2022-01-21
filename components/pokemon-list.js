@@ -1,30 +1,18 @@
 import PropTypes from "prop-types"
 import If from "./if"
+import List from "./list"
 import PokemonItem from "./pokemon-item"
-import styled from "@emotion/styled"
-import media from "../styles/media"
-
-const StyledList = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  ${media.xs} {
-    justify-content: space-between;
-  }
-  gap: 35px;
-  flex-wrap: wrap;
-`
 
 const PokemonList = ({ pokemons }) => (
   <If condition={pokemons?.length > 0}>
-    <StyledList>
+    <List>
       {
         // Iterate each pokemon from pokemons
         pokemons?.map((pokemon) => (
           <PokemonItem pokemon={pokemon} key={pokemon.id} />
         ))
       }
-    </StyledList>
+    </List>
   </If>
 )
 
