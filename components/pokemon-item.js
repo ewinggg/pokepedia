@@ -1,15 +1,13 @@
 import PropTypes from "prop-types"
 import If from "./if"
+import Item from "./item"
 import PokemonCard from "./pokemon-card"
-import styled from "@emotion/styled"
-
-const StyledItem = styled.li``
 
 const PokemonItem = ({ pokemon }) => (
   <If condition={typeof pokemon === "object"}>
-    <StyledItem>
+    <Item>
       <PokemonCard pokemon={pokemon} />
-    </StyledItem>
+    </Item>
   </If>
 )
 
