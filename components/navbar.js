@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Card from "./card"
+import NavCard from "./navcard"
 import Item from "./item"
 import List from "./list"
 import routes from "../utils/routes"
@@ -11,19 +11,15 @@ const StyledNav = styled.nav``
 
 const StyledIcon = styled.span`
   position: absolute;
-  left: -50px;
+  left: -30px;
   top: -15px;
 `
 
 const StyledRoute = styled.span`
   font-size: 20px;
   font-weight: 600;
-  color: var(--dark-white);
+  color: var(--dark-black);
   text-transform: uppercase;
-  text-shadow: -1px -1px 0 var(--dark-black), 1px -1px 0 var(--dark-black),
-    -1px 1px 0 var(--dark-black), 1px 1px 0 var(--dark-black),
-    2px 2px 0 var(--dark-black), 2px 2px 0 var(--dark-black),
-    3px 3px 0 var(--dark-black);
 `
 
 const rotate = keyframes`
@@ -38,7 +34,7 @@ const rotate = keyframes`
 const cardContentStyle = css`
   display: flex;
   align-items: center;
-  margin: 6px -10px 5px 35px;
+  margin: 6px 25px 5px 35px;
 
   &:hover svg {
     animation: ${rotate} ease-in-out 0.5s;
@@ -57,10 +53,10 @@ const Navbar = () => (
           <Item key={route.id}>
             <Link href={route.path} passHref={true}>
               <a>
-                <Card border={2} contentStyle={cardContentStyle}>
+                <NavCard border={2} contentStyle={cardContentStyle}>
                   <StyledIcon>{route.icon}</StyledIcon>
                   <StyledRoute>{route.name}</StyledRoute>
-                </Card>
+                </NavCard>
               </a>
             </Link>
           </Item>

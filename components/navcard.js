@@ -4,12 +4,10 @@ import styled from "@emotion/styled"
 
 export const StyledCard = styled.div`
   display: flex;
-  width: 150px;
-  height: 200px;
   box-shadow: 5px 5px 1px 4px var(--dark-green);
   border-width: ${({ border }) => border && `${border}px`};
   border-style: ${({ border }) => border && "solid"};
-  border-color: ${({ brColor }) => brColor ?? "var(--dark-white)"};
+  border-color: ${({ brColor }) => brColor ?? "var(--dark-green)"};
   background-color: ${({ bgColor }) => bgColor ?? "var(--dark-white)"};
   border-radius: 20px;
   padding-top: ${({ pt }) => pt && `${pt}px`};
@@ -23,7 +21,7 @@ export const StyledCard = styled.div`
   }
 `
 
-const Card = forwardRef((props, ref) => {
+const NavCard = forwardRef((props, ref) => {
   const { children, contentStyle, style, ...rest } = props
 
   return (
@@ -33,10 +31,10 @@ const Card = forwardRef((props, ref) => {
   )
 })
 
-Card.propTypes = {
+NavCard.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
   contentStyle: PropTypes.string,
   style: PropTypes.string,
 }
 
-export default Card
+export default NavCard
