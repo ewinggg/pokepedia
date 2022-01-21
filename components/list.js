@@ -2,10 +2,10 @@
 
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 import media from "../styles/media"
 
-const StyledList = styled.ul`
+const baseStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,9 +23,9 @@ const List = forwardRef((props, ref) => {
   const { children, css, ...rest } = props
 
   return (
-    <StyledList ref={ref} css={css} {...rest}>
+    <ul ref={ref} css={[baseStyle, css]} {...rest}>
       {children}
-    </StyledList>
+    </ul>
   )
 })
 

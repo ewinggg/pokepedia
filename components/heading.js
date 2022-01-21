@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
+import { jsx } from "@emotion/react"
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import If from "./if"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 
-const StyledHeading = styled.h1`
+const baseStyle = css`
   font-size: 100%;
   margin: 0;
 `
@@ -17,13 +18,10 @@ const Heading = forwardRef((props, ref) => {
   // If level is not valid, fallback to h2
   const tag = `h${level < 7 ? level : 2}`
 
-  return (
-    <If condition={typeof children === "string"}>
-      <StyledHeading as={tag} ref={ref} css={css} {...rest}>
-        {children}
-      </StyledHeading>
-    </If>
-  )
+  // Create dynamic heading
+  const heading = jsx(tag, { css: [baseStyle, css], ref, ...rest }, children)
+
+  return <If condition={typeof children === "string"}>{heading}</If>
 })
 
 Heading.propTypes = {

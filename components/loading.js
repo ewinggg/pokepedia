@@ -1,6 +1,7 @@
+/** @jsxImportSource @emotion/react */
+
 import Pokeball from "./pokeball"
-import { keyframes } from "@emotion/react"
-import styled from "@emotion/styled"
+import { css, keyframes } from "@emotion/react"
 
 const rotate = keyframes`
   0% {
@@ -11,7 +12,7 @@ const rotate = keyframes`
   }
 `
 
-const StyledLoading = styled.span`
+const baseStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,9 +25,9 @@ const StyledLoading = styled.span`
 `
 
 const Loading = () => (
-  <StyledLoading>
+  <span className="loading" css={baseStyle}>
     <Pokeball size={5} />
-  </StyledLoading>
+  </span>
 )
 
 export default Loading

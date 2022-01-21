@@ -1,26 +1,28 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import Container from "./container"
 import Topbar from "./topbar"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 
-const StyledLayout = styled.div`
+const baseLayoutStyle = css`
   min-height: 100vh;
   height: 100%;
 `
 
-const StyledMain = styled.main`
+const baseMainStyle = css`
   display: flex;
   flex-direction: column;
   gap: 35px;
 `
 
 const Layout = ({ children }) => (
-  <StyledLayout>
+  <div className="layout" css={baseLayoutStyle}>
     <Container>
       <Topbar />
-      <StyledMain>{children}</StyledMain>
+      <main css={baseMainStyle}>{children}</main>
     </Container>
-  </StyledLayout>
+  </div>
 )
 
 Layout.propTypes = {

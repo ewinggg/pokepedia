@@ -1,10 +1,12 @@
+/** @jsxImportSource @emotion/react */
+
 import Image from "next/image"
 import Navbar from "./navbar"
 import logo from "../public/logo.png"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 import media from "../styles/media"
 
-const StyledHeader = styled.header`
+const baseStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,10 +20,10 @@ const StyledHeader = styled.header`
 `
 
 const Topbar = () => (
-  <StyledHeader>
+  <header css={baseStyle}>
     <Image src={logo} alt="Pokepedia logo" />
     <Navbar />
-  </StyledHeader>
+  </header>
 )
 
 export default Topbar

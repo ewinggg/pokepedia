@@ -2,9 +2,9 @@
 
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 
-export const StyledCard = styled.div`
+const baseCardStyle = css`
   display: flex;
   box-shadow: 5px 5px 1px 4px var(--dark-green);
   border-width: ${({ border }) => border && `${border}px`};
@@ -27,9 +27,11 @@ const NavCard = forwardRef((props, ref) => {
   const { children, cssContent, css, ...rest } = props
 
   return (
-    <StyledCard ref={ref} css={css} {...rest}>
-      <div css={cssContent}>{children}</div>
-    </StyledCard>
+    <div className="card" ref={ref} css={[baseCardStyle, css]} {...rest}>
+      <div className="card-content" css={cssContent}>
+        {children}
+      </div>
+    </div>
   )
 })
 

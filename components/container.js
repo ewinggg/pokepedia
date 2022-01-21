@@ -2,10 +2,10 @@
 
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 import media from "../styles/media"
 
-const StyledContainer = styled.div`
+const baseStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,9 +28,9 @@ const Container = forwardRef((props, ref) => {
   const { children, css, ...rest } = props
 
   return (
-    <StyledContainer ref={ref} css={css} {...rest}>
+    <div className="container" ref={ref} css={[baseStyle, css]} {...rest}>
       {children}
-    </StyledContainer>
+    </div>
   )
 })
 

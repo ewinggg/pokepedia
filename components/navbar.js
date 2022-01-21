@@ -1,20 +1,18 @@
+/** @jsxImportSource @emotion/react */
+
 import Link from "next/link"
 import NavCard from "./navcard"
 import Item from "./item"
 import List from "./list"
 import routes from "../utils/routes"
-import styled from "@emotion/styled"
 import { css, keyframes } from "@emotion/react"
 
-const StyledNav = styled.nav``
-
-const StyledIcon = styled.span`
+const baseIconStyle = css`
   position: absolute;
   left: -50px;
   top: -15px;
 `
-
-const StyledRoute = styled.span`
+const baseRouteStyle = css`
   font-size: 20px;
   font-weight: 600;
   color: var(--dark-black);
@@ -30,10 +28,22 @@ const rotate = keyframes`
   }
 `
 
+const cardStyle = css`
+  border: 2px solid var(--dark-green);
+  transition: all 0.25s;
+  box-shadow: 9px 10px 0 var(--dark-green);
+  transform: skew(-5deg);
+  &:hover {
+    box-shadow: none;
+    transform: skew(-5deg) translateX(5px);
+  }
+`
+
 const cardContentStyle = css`
   display: flex;
   align-items: center;
-  margin: 6px 25px 5px 35px;
+  margin: 6px 10px 5px 35px;
+  transform: skew(5deg);
 
   &:hover svg {
     animation: ${rotate} ease-in-out 0.5s;
@@ -44,7 +54,7 @@ const cardContentStyle = css`
 `
 
 const Navbar = () => (
-  <StyledNav>
+  <nav>
     <List>
       {
         // Iterate each route from routes
@@ -52,9 +62,9 @@ const Navbar = () => (
           <Item key={route.id}>
             <Link href={route.path} passHref={true}>
               <a>
-                <NavCard border={2} cssContent={cardContentStyle}>
-                  <StyledIcon>{route.icon}</StyledIcon>
-                  <StyledRoute>{route.name}</StyledRoute>
+                <NavCard css={cardStyle} cssContent={cardContentStyle}>
+                  <span css={baseIconStyle}>{route.icon}</span>
+                  <span css={baseRouteStyle}>{route.name}</span>
                 </NavCard>
               </a>
             </Link>
@@ -62,7 +72,7 @@ const Navbar = () => (
         ))
       }
     </List>
-  </StyledNav>
+  </nav>
 )
 
 export default Navbar

@@ -2,17 +2,12 @@
 
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 
-export const StyledCard = styled.div`
+const baseCardStyle = css`
   display: flex;
-  width: 150px;
-  height: 200px;
-  box-shadow: 5px 5px 1px 4px var(--dark-green);
-  border-width: ${({ border }) => border && `${border}px`};
-  border-style: ${({ border }) => border && "solid"};
-  border-color: ${({ brColor }) => brColor ?? "var(--dark-green)"};
-  background-color: ${({ bgColor }) => bgColor ?? "var(--dark-white)"};
+  border: 4px solid var(--dark-green);
+  background-color: var(--light-white);
   border-radius: 20px;
   transition: all 0.25s;
   &:hover {
@@ -25,9 +20,11 @@ const Card = forwardRef((props, ref) => {
   const { children, cssContent, css, ...rest } = props
 
   return (
-    <StyledCard ref={ref} css={css} {...rest}>
-      <div css={cssContent}>{children}</div>
-    </StyledCard>
+    <div className="card" ref={ref} css={[baseCardStyle, css]} {...rest}>
+      <div className="card-content" css={cssContent}>
+        {children}
+      </div>
+    </div>
   )
 })
 

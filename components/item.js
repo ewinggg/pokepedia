@@ -2,9 +2,9 @@
 
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
-import styled from "@emotion/styled"
+import { css } from "@emotion/react"
 
-const StyledItem = styled.li`
+const baseStyle = css`
   text-indent: 0;
   list-style-type: none;
 `
@@ -13,9 +13,9 @@ const Item = forwardRef((props, ref) => {
   const { children, css, ...rest } = props
 
   return (
-    <StyledItem ref={ref} css={css} {...rest}>
+    <li ref={ref} css={[baseStyle, css]} {...rest}>
       {children}
-    </StyledItem>
+    </li>
   )
 })
 

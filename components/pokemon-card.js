@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import Image from "next/image"
 import Link from "next/link"
 import PropTypes from "prop-types"
@@ -6,7 +8,6 @@ import If from "./if"
 import Heading from "./heading"
 import useColors from "../hooks/useColors"
 import { css } from "@emotion/react"
-import styled from "@emotion/styled"
 
 const cardStyle = css`
   padding: 25px 25px 70px 25px;
@@ -20,19 +21,19 @@ const cardContentStyle = css`
   height: 100px;
 `
 
-const StyledHeader = styled.header`
+const baseHeaderStyle = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
 `
 
-const StyledMiniCard = styled.span`
-  display: flex;
+const miniCardStyle = css`
   align-items: center;
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: var(--bgColor);
   padding: 3px 5px;
   z-index: 1;
+  border: none;
   &.counter {
     position: absolute;
     right: -50px;
@@ -48,7 +49,13 @@ const StyledMiniCard = styled.span`
   }
 `
 
-const StyledMain = styled.main`
+const miniCardContentStyle = css`
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+`
+
+const baseMainStyle = css`
   position: absolute;
   top: 30px;
   display: flex;
@@ -77,18 +84,26 @@ const PokemonCard = ({ pokemon }) => {
             border={4}
             css={cardStyle}
             cssContent={cardContentStyle}
+            style={{ "--bgColor": light }}
           >
-            <StyledHeader color={light}>
-              <StyledMiniCard bgColor={dark}>
-                <span className="content">
-                  {`#${String(pokemon.id).padStart(3, "0")}`}
-                </span>
-              </StyledMiniCard>
-              <StyledMiniCard bgColor={dark} className="counter">
-                <span className="content">{`Owned: ${0}`}</span>
-              </StyledMiniCard>
-            </StyledHeader>
-            <StyledMain>
+            <header css={baseHeaderStyle}>
+              <Card
+                css={miniCardStyle}
+                cssContent={miniCardContentStyle}
+                style={{ "--bgColor": dark }}
+              >
+                {`#${String(pokemon.id).padStart(3, "0")}`}
+              </Card>
+              <Card
+                className="counter"
+                css={miniCardStyle}
+                cssContent={miniCardContentStyle}
+                style={{ "--bgColor": dark }}
+              >
+                {`Owned: ${0}`}
+              </Card>
+            </header>
+            <main css={baseMainStyle}>
               <Image
                 src={pokemon.artwork}
                 alt={pokemon.name}
@@ -98,7 +113,7 @@ const PokemonCard = ({ pokemon }) => {
               <Heading level={2} css={headingStyle}>
                 {pokemon.name}
               </Heading>
-            </StyledMain>
+            </main>
           </Card>
         </a>
       </Link>
