@@ -24,11 +24,12 @@ const globalStyles = css`
     --dark-green: #005339;
     --dark-purple: #b0afdb;
     --dark-white: #ffffff;
+    --light-black: hsla(0, 0%, 0%, 0.05);
     --light-blue: #5c7aff;
     --light-cyan: #c6eced;
     --light-green: #03ac0e;
     --light-purple: #c9c7ee;
-    --light-white: hsl(0, 0%, 100%, 0.5);
+    --light-white: hsla(0, 0%, 100%, 0.5);
   }
 `
 
