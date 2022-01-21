@@ -24,19 +24,19 @@ export const StyledCard = styled.div`
 `
 
 const NavCard = forwardRef((props, ref) => {
-  const { children, contentStyle, style, ...rest } = props
+  const { children, cssContent, css, ...rest } = props
 
   return (
-    <StyledCard ref={ref} css={style} {...rest}>
-      <div css={contentStyle}>{children}</div>
+    <StyledCard ref={ref} css={css} {...rest}>
+      <div css={cssContent}>{children}</div>
     </StyledCard>
   )
 })
 
 NavCard.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
-  contentStyle: PropTypes.string,
-  style: PropTypes.string,
+  css: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  cssContent: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 }
 
 export default NavCard

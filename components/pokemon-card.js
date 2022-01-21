@@ -8,6 +8,10 @@ import useColors from "../hooks/useColors"
 import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 
+const cardStyle = css`
+  padding: 25px 25px 70px 25px;
+`
+
 const cardContentStyle = css`
   position: relative;
   background-color: var(--light-white);
@@ -71,11 +75,8 @@ const PokemonCard = ({ pokemon }) => {
           <Card
             bgColor={dark}
             border={4}
-            contentStyle={cardContentStyle}
-            pt={25}
-            pr={25}
-            pb={70}
-            pl={25}
+            css={cardStyle}
+            cssContent={cardContentStyle}
           >
             <StyledHeader color={light}>
               <StyledMiniCard bgColor={dark}>
@@ -94,7 +95,7 @@ const PokemonCard = ({ pokemon }) => {
                 width={100}
                 height={100}
               />
-              <Heading level={2} style={headingStyle}>
+              <Heading level={2} css={headingStyle}>
                 {pokemon.name}
               </Heading>
             </StyledMain>

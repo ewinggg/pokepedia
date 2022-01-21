@@ -11,7 +11,7 @@ const StyledHeading = styled.h1`
 `
 
 const Heading = forwardRef((props, ref) => {
-  const { children, level, style, ...rest } = props
+  const { children, level, css, ...rest } = props
 
   // Set level from h1 to h6
   // If level is not valid, fallback to h2
@@ -19,7 +19,7 @@ const Heading = forwardRef((props, ref) => {
 
   return (
     <If condition={typeof children === "string"}>
-      <StyledHeading as={tag} ref={ref} css={style} {...rest}>
+      <StyledHeading as={tag} ref={ref} css={css} {...rest}>
         {children}
       </StyledHeading>
     </If>
@@ -28,8 +28,8 @@ const Heading = forwardRef((props, ref) => {
 
 Heading.propTypes = {
   children: PropTypes.string.isRequired,
+  css: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   level: PropTypes.number.isRequired,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 }
 
 export default Heading

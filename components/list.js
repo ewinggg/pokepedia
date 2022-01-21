@@ -20,10 +20,10 @@ const StyledList = styled.ul`
 `
 
 const List = forwardRef((props, ref) => {
-  const { children, style, ...rest } = props
+  const { children, css, ...rest } = props
 
   return (
-    <StyledList ref={ref} css={style} {...rest}>
+    <StyledList ref={ref} css={css} {...rest}>
       {children}
     </StyledList>
   )
@@ -31,7 +31,7 @@ const List = forwardRef((props, ref) => {
 
 List.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  css: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 }
 
 export default List
