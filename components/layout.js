@@ -8,11 +8,17 @@ const StyledLayout = styled.div`
   height: 100%;
 `
 
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+`
+
 const Layout = ({ children }) => (
   <StyledLayout>
     <Container>
       <Topbar />
-      <main>{children}</main>
+      <StyledMain>{children}</StyledMain>
     </Container>
   </StyledLayout>
 )
