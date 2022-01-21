@@ -27,19 +27,18 @@ const StyledMiniCard = styled.span`
   display: flex;
   align-items: center;
   background-color: ${({ bgColor }) => bgColor};
-  transform: skew(-15deg);
   padding: 3px 5px;
   z-index: 1;
   &.counter {
     position: absolute;
-    right: -15px;
+    right: -50px;
     top: -30px;
     border: 3px solid var(--dark-black);
+    border-radius: 20px;
     background-color: var(--dark-white);
   }
   & .content {
     display: inline-block;
-    transform: skew(15deg);
     font-size: 12px;
     font-weight: 700;
   }
@@ -56,38 +55,33 @@ const StyledMain = styled.main`
 
 const headingStyle = css`
   font-size: 13px;
-  color: var(--dark-white);
+  color: var(--dark-black);
   z-index: 1;
   text-align: right;
   text-transform: uppercase;
-  text-shadow: -1px -1px 0 var(--dark-black), 1px -1px 0 var(--dark-black),
-    -1px 1px 0 var(--dark-black), 1px 1px 0 var(--dark-black),
-    2px 2px 0 var(--dark-black), 2px 2px 0 var(--dark-black),
-    3px 3px 0 var(--dark-black);
 `
 
 const PokemonCard = ({ pokemon }) => {
   // Get random color based on pokemon id
-  const flag = pokemon.id % 3
-  const { light, dark } = useColors(flag)
+  const { light, dark } = useColors(0)
 
   return (
     <If condition={typeof pokemon === "object"}>
       <Link href={`/pokemon/${pokemon.name}`} passHref={true}>
         <a>
           <Card
-            bgColor={light}
+            bgColor={dark}
             border={4}
             contentStyle={cardContentStyle}
-            pt={15}
-            pr={15}
-            pb={50}
-            pl={15}
+            pt={25}
+            pr={25}
+            pb={70}
+            pl={25}
           >
-            <StyledHeader color={dark}>
+            <StyledHeader color={light}>
               <StyledMiniCard bgColor={dark}>
                 <span className="content">
-                  {`#${String(pokemon.id).padStart(4, "0")}`}
+                  {`#${String(pokemon.id).padStart(3, "0")}`}
                 </span>
               </StyledMiniCard>
               <StyledMiniCard bgColor={dark} className="counter">
@@ -96,7 +90,7 @@ const PokemonCard = ({ pokemon }) => {
             </StyledHeader>
             <StyledMain>
               <Image
-                src={pokemon.dreamworld}
+                src={pokemon.artwork}
                 alt={pokemon.name}
                 width={100}
                 height={100}

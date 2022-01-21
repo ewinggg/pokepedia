@@ -9,6 +9,7 @@ const globalStyles = css`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
     margin: 0;
     line-height: 1;
+    background-color: #f6f8fc;
   }
 
   a {
@@ -20,12 +21,12 @@ const globalStyles = css`
   :root {
     --dark-black: #161a2b;
     --dark-cyan: #a0cece;
-    --dark-green: #a6d5ab;
+    --dark-green: #005339;
     --dark-purple: #b0afdb;
     --dark-white: #ffffff;
     --light-blue: #5c7aff;
     --light-cyan: #c6eced;
-    --light-green: #c7edca;
+    --light-green: #03ac0e;
     --light-purple: #c9c7ee;
     --light-white: hsl(0, 0%, 100%, 0.5);
   }
