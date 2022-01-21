@@ -1,31 +1,43 @@
 import PropTypes from "prop-types"
+import { forwardRef } from "react"
 import styled from "@emotion/styled"
 import media from "../styles/media"
 
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
   align-items: center;
-  ${media.xs} {
+  gap: 25px;
+  margin: 25px auto;
+  ${media.sm} {
     align-items: flex-start;
     max-width: 685px;
   }
-  ${media.sm} {
+  ${media.md} {
     max-width: 768px;
   }
-  ${media.lg} {
+  ${media.xl} {
     max-width: 1024px;
   }
-  margin: 25px auto;
 `
 
-const Container = ({ children }) => (
-  <StyledContainer>{children}</StyledContainer>
-)
+const Container = forwardRef((props, ref) => {
+  const { children, style, ...rest } = props
+
+  return (
+    <StyledContainer ref={ref} className={style} {...rest}>
+      {children}
+    </StyledContainer>
+  )
+})
+
+Container.defaultProps = {
+  style: "",
+}
 
 Container.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
+  style: PropTypes.string,
 }
 
 export default Container
