@@ -1,34 +1,21 @@
 import Image from "next/image"
 import Link from "next/link"
 import PropTypes from "prop-types"
+import Card from "./card"
 import If from "./if"
 import Heading from "./heading"
 import useColors from "../hooks/useColors"
 import { css } from "@emotion/css"
 import styled from "@emotion/styled"
 
-const StyledA = styled.a`
-  display: inline-block;
-  padding: 15px 15px 50px;
-  background-color: ${({ bgColor }) => bgColor};
-  border: 4px solid var(--color-dark-black);
-  box-shadow: 9px 10px 0 var(--color-light-blue);
-  transform: skew(-5deg);
-  transition: all 0.25s;
-  &:hover {
-    box-shadow: none;
-    transform: skew(-5deg) translateX(5px);
-  }
-`
-
-const StyledCard = styled.div`
+const cardContentStyle = css`
   position: relative;
-  background-color: var(--color-light-white);
+  background-color: var(--light-white);
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  transform: skew(5deg);
 `
+
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
@@ -47,10 +34,10 @@ const StyledMiniCard = styled.span`
     position: absolute;
     right: -15px;
     top: -30px;
-    border: 3px solid var(--color-dark-black);
-    background-color: var(--color-dark-white);
+    border: 3px solid var(--dark-black);
+    background-color: var(--dark-white);
   }
-  &.content {
+  & .content {
     display: inline-block;
     transform: skew(15deg);
     font-size: 12px;
@@ -69,13 +56,13 @@ const StyledMain = styled.main`
 
 const headingStyle = css`
   font-size: 13px;
-  color: var(--color-dark-white);
+  color: var(--dark-white);
   z-index: 1;
   text-transform: uppercase;
-  text-shadow: -1px -1px 0 var(--color-dark-black),
-    1px -1px 0 var(--color-dark-black), -1px 1px 0 var(--color-dark-black),
-    1px 1px 0 var(--color-dark-black), 2px 2px 0 var(--color-dark-black),
-    2px 2px 0 var(--color-dark-black), 3px 3px 0 var(--color-dark-black);
+  text-shadow: -1px -1px 0 var(--dark-black), 1px -1px 0 var(--dark-black),
+    -1px 1px 0 var(--dark-black), 1px 1px 0 var(--dark-black),
+    2px 2px 0 var(--dark-black), 2px 2px 0 var(--dark-black),
+    3px 3px 0 var(--dark-black);
 `
 
 const PokemonCard = ({ pokemon }) => {
@@ -86,8 +73,16 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <If condition={typeof pokemon === "object"}>
       <Link href="/" passHref={true}>
-        <StyledA bgColor={light}>
-          <StyledCard>
+        <a>
+          <Card
+            bgColor={light}
+            border={4}
+            contentStyle={cardContentStyle}
+            pt={15}
+            pr={15}
+            pb={50}
+            pl={15}
+          >
             <StyledHeader color={dark}>
               <StyledMiniCard bgColor={dark}>
                 <span className="content">
@@ -109,8 +104,8 @@ const PokemonCard = ({ pokemon }) => {
                 {pokemon.name}
               </Heading>
             </StyledMain>
-          </StyledCard>
-        </StyledA>
+          </Card>
+        </a>
       </Link>
     </If>
   )
