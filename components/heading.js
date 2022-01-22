@@ -3,10 +3,12 @@
 import { jsx } from "@emotion/react"
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
-import If from "./if"
 import { css } from "@emotion/react"
 
 const headingStyle = css`
+  display: flex;
+  align-items: center;
+  gap: 15px;
   font-size: 100%;
   margin: 0;
   text-transform: capitalize;
@@ -23,11 +25,15 @@ const Heading = forwardRef((props, ref) => {
   // Create dynamic heading
   const heading = jsx(tag, { css: [headingStyle, css], ref, ...rest }, children)
 
-  return <If condition={typeof children === "string"}>{heading}</If>
+  return heading
 })
 
 Heading.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+    PropTypes.element,
+  ]).isRequired,
   css: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   level: PropTypes.number.isRequired,
 }
