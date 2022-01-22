@@ -8,17 +8,56 @@ import If from "./if"
 import Heading from "./heading"
 import useColors from "../hooks/useColors"
 import { css } from "@emotion/react"
-
-const cardStyle = css`
-  padding: 25px 25px 70px 25px;
-`
+import {
+  borderRadius,
+  textShadowStyle,
+  thinBorderStyle,
+} from "../styles/shared"
 
 const cardContentStyle = css`
+  ${borderRadius}
   position: relative;
   background-color: var(--light-white);
   border-radius: 50%;
   width: 100px;
   height: 100px;
+`
+
+const cardStyle = css`
+  ${borderRadius}
+  padding: 25px 25px 70px 25px;
+  background-color: var(--bgColor);
+  transition: all 0.25s;
+  padding: 25px 25px 70px 25px;
+  box-shadow: 10px 10px 10px 5px #eceef9;
+  &:hover {
+    transform: translateX(-5px) translateY(-5px);
+    box-shadow: 25px 15px 15px #eceef9;
+  }
+`
+
+const headingStyle = css`
+  font-size: 13px;
+  text-align: right;
+  text-transform: uppercase;
+  z-index: 1;
+  ${textShadowStyle}
+`
+
+const mainStyle = css`
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 13px;
+  position: absolute;
+  top: 30px;
+`
+
+const miniCardContentStyle = css`
+  ${borderRadius}
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
 `
 
 const headerStyle = css`
@@ -29,6 +68,7 @@ const headerStyle = css`
 `
 
 const miniCardStyle = css`
+  ${borderRadius}
   align-items: center;
   background-color: var(--bgColor);
   padding: 3px 5px;
@@ -38,7 +78,7 @@ const miniCardStyle = css`
     position: absolute;
     right: -50px;
     top: -30px;
-    border: 3px solid var(--dark-black);
+    ${thinBorderStyle}
     border-radius: 20px;
     background-color: var(--dark-white);
   }
@@ -49,31 +89,8 @@ const miniCardStyle = css`
   }
 `
 
-const miniCardContentStyle = css`
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-`
-
-const mainStyle = css`
-  position: absolute;
-  top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 13px;
-`
-
-const headingStyle = css`
-  font-size: 13px;
-  color: var(--dark-black);
-  z-index: 1;
-  text-align: right;
-  text-transform: uppercase;
-`
-
 const PokemonCard = ({ pokemon }) => {
-  const { light, dark } = useColors(0)
+  const { light, dark } = useColors("white")
 
   return (
     <If condition={typeof pokemon === "object"}>

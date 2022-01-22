@@ -9,7 +9,7 @@ import { css } from "@emotion/react"
 const listStyle = css`
   display: flex;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 8px;
   max-height: 412px;
   overflow-y: scroll;
   padding: 5px;

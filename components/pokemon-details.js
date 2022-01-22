@@ -8,6 +8,7 @@ import Pokeball from "./pokeball"
 import If from "./if"
 import { css, Global, keyframes } from "@emotion/react"
 import media from "../styles/media"
+import { borderRadius, flexCenterStyle } from "../styles/shared"
 import PokemonAbilityList from "./pokemon-ability-list"
 import PokemonAdd from "./pokemon-add"
 import PokemonMoveList from "./pokemon-move-list"
@@ -77,15 +78,12 @@ const cardStyle = css`
   padding: 50px;
   flex: 3;
   ${media.lg} {
-    transform: skew(-3deg);
+    ${borderRadius}
   }
 `
 
 const cardContentStyle = css`
   ${columnStyle}
-  ${media.lg} {
-    transform: skew(3deg);
-  }
   ${media.sm} {
     ${rowStyle}
   }
@@ -97,7 +95,7 @@ const mainStyle = css`
 `
 
 const imageStyle = css`
-  display: flex;
+  ${flexCenterStyle}
   flex-direction: column;
   align-items: center;
   position: relative;
@@ -110,25 +108,6 @@ const imageStyle = css`
     position: absolute;
     bottom: -10px;
   }
-`
-
-const shake = keyframes`
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-`
-
-const imageShake = css`
-  animation: ${shake} 0.5s;
-  animation-iteration-count: initial;
 `
 
 const PokemonDetails = ({ pokemon }) => {
@@ -173,7 +152,6 @@ const PokemonDetails = ({ pokemon }) => {
               <If condition={!state.catch}>
                 <Image
                   className="image"
-                  css={!state.catch && imageShake}
                   src={profileImage}
                   alt={name}
                   width={200}

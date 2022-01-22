@@ -1,86 +1,65 @@
 /** @jsxImportSource @emotion/react */
 
-import Card from "./card"
-import Pokeball from "./icons/pokeball"
-import { CATCH_POKEMON } from "../state/action-types"
+import Dialog from "./dialog"
+import { catchPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
+import {
+  borderRadius,
+  boxShadowStyle,
+  buttonTextStyle,
+  flexCenterStyle,
+  textShadowStyle,
+  thinBorderStyle,
+} from "../styles/shared"
 
-const buttonStyle = css`
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  cursor: pointer;
+const buttonLabelStyle = css`
+  ${buttonTextStyle}
+  ${flexCenterStyle}
+  ${borderRadius}
+  ${textShadowStyle}
+  margin: 6px -10px 5px 20px;
 `
 
-const navCardStyle = css`
-  border: 2px solid var(--dark-black);
-  transition: all 0.25s;
-  transform: skew(-5deg);
+const buttonStyle = css`
+  ${boxShadowStyle}
+  ${borderRadius}
+  ${thinBorderStyle}
+  background-color: var(--dark-white);
+  padding: 0;
   cursor: pointer;
+  transition: all 0.25s;
   &:active {
     box-shadow: none;
     transform: skew(-5deg) translateX(5px);
   }
 `
 
-const navCardContentStyle = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 6px -10px 5px 35px;
-  transform: skew(5deg);
-  width: 100%;
-  &:hover svg {
-    animation: ${rotate} ease-in-out 0.5s;
-    animation-delay: 0.05s;
-    animation-iteration-count: inherit;
-    transform-origin: 50% 50%;
-  }
-`
-
-const catchStyle = css`
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--dark-white);
-  text-transform: uppercase;
-  text-shadow: -1px -1px 0 var(--dark-black), 1px -1px 0 var(--dark-black),
-    -1px 1px 0 var(--dark-black), 1px 1px 0 var(--dark-black),
-    2px 2px 0 var(--dark-black), 2px 2px 0 var(--dark-black),
-    3px 3px 0 var(--dark-black);
-`
-
-const iconStyle = css`
-  position: absolute;
-  left: -50px;
-  top: -15px;
-`
-
 const PokemonAdd = () => {
-  const { dispatch } = useAppContext()
+  const { state, dispatch } = useAppContext()
 
   // Handle click for adding pokemon
   const handleClickAdd = () => {
     const probability = (number) => Math.random() <= number
     const isCatched = probability(0.5)
 
-    dispatch({ type: CATCH_POKEMON, payload: isCatched })
+    dispatch(catchPokemon(isCatched))
+  }
+
+  // Handle close dialog
+  const handleCloseDialog = () => {
+    dispatch(toggleDialog())
   }
 
   return (
-    <Card
-      css={navCardStyle}
-      cssContent={navCardContentStyle}
-      withBorder
-      withShadow
-    >
+    <>
       <button css={buttonStyle} onClick={handleClickAdd}>
-        <span css={iconStyle}>
-          <Pokeball size={3} />
-        </span>
-        <span css={catchStyle}>Catch Pokemon</span>
+        <span css={buttonLabelStyle}>Catch Pokemon</span>
       </button>
-    </Card>
+      <Dialog open={state.dialogOpen} handleClose={handleCloseDialog}>
+        tes
+      </Dialog>
+    </>
   )
 }
 

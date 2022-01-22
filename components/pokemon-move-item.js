@@ -6,35 +6,24 @@ import Heading from "./heading"
 import If from "./if"
 import Item from "./item"
 import { css } from "@emotion/react"
-
-const itemStyle = css`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`
-
-const statStyle = css`
-  justify-content: space-between;
-`
+import { borderRadius, thinBorderStyle } from "../styles/shared"
 
 const cardStyle = css`
-  transform: skew(-15deg);
-  padding: 5px 8px;
-  border: 2px solid var(--dark-black);
+  ${borderRadius}
+  ${thinBorderStyle}
+padding: 3px 5px;
 `
 
 const cardContentStyle = css`
+  ${borderRadius}
   display: inline-block;
-  transform: skew(15deg);
 `
 
 const PokemonMoveItem = ({ pokemonMove }) => (
   <If condition={typeof pokemonMove === "object"}>
-    <Item css={itemStyle}>
+    <Item>
       <Card css={cardStyle} cssContent={cardContentStyle}>
-        <Heading level={3} css={statStyle}>
-          {pokemonMove.name}
-        </Heading>
+        <Heading level={3}>{pokemonMove.name}</Heading>
       </Card>
     </Item>
   </If>

@@ -3,16 +3,15 @@
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import { css } from "@emotion/react"
+import { flexCenterStyle } from "../styles/shared"
 
 const listStyle = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenterStyle}
+  flex-wrap: wrap;
+  gap: 35px;
   padding: 0;
   margin: 0;
   list-style: none;
-  gap: 35px;
-  flex-wrap: wrap;
 `
 
 const List = forwardRef((props, ref) => {

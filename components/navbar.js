@@ -6,6 +6,12 @@ import Item from "./item"
 import List from "./list"
 import routes from "../utils/routes"
 import { css, keyframes } from "@emotion/react"
+import {
+  buttonTextStyle,
+  flexCenterStyle,
+  textShadowStyle,
+  thinBorderStyle,
+} from "../styles/shared"
 
 const baseIconStyle = css`
   position: absolute;
@@ -28,25 +34,9 @@ const rotate = keyframes`
   }
 `
 
-const cardStyle = css`
-  border: 2px solid var(--dark-green);
-  transition: all 0.25s;
-  box-shadow: 9px 10px 0 var(--dark-green);
-  transform: skew(-5deg);
-  cursor: pointer;
-  &:active {
-    box-shadow: none;
-    transform: skew(-5deg) translateX(5px);
-  }
-`
-
 const cardContentStyle = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 6px 10px 5px 35px;
-  transform: skew(5deg);
-  width: 100%;
+  ${flexCenterStyle}
+  margin: 6px 10px 5px 20px;
   &:hover svg {
     animation: ${rotate} ease-in-out 0.5s;
     animation-delay: 0.05s;
@@ -55,9 +45,33 @@ const cardContentStyle = css`
   }
 `
 
+const cardStyle = css`
+  ${thinBorderStyle}
+  transition: all 0.25s;
+  box-shadow: 10px 10px 0 var(--dark-green);
+  &:active {
+    box-shadow: none;
+  }
+`
+
+const iconStyle = css`
+  position: absolute;
+  left: -50px;
+  top: -15px;
+`
+
+const listStyle = css`
+  gap: 50px;
+`
+
+const routeStyle = css`
+  ${buttonTextStyle}
+  ${textShadowStyle}
+`
+
 const Navbar = () => (
   <nav>
-    <List>
+    <List css={listStyle}>
       {
         // Iterate each route from routes
         routes.map((route) => (

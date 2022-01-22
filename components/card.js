@@ -3,25 +3,22 @@
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import { css } from "@emotion/react"
-
-const cardStyle = css`
-  display: flex;
-  border: 4px solid var(--dark-green);
-  background-color: var(--light-white);
-  border-radius: 20px;
-  transition: all 0.25s;
-  &:hover {
-    box-shadow: 15px 15px 0 var(--dark-green);
-    transform: translateX(5px);
-  }
-`
+import { boxShadowStyle, thickBorderStyle } from "../styles/shared"
 
 const cardBorderStyle = css`
-  border: 4px solid var(--dark-black);
+  ${thickBorderStyle}
+`
+
+const cardContentStyle = css`
+  width: 100%;
 `
 
 const cardShadowStyle = css`
-  box-shadow: 9px 10px 0 var(--light-blue);
+  ${boxShadowStyle}
+`
+
+const cardStyle = css`
+  background-color: var(--dark-white);
 `
 
 const Card = forwardRef((props, ref) => {
@@ -40,7 +37,7 @@ const Card = forwardRef((props, ref) => {
       ]}
       {...rest}
     >
-      <div className="card-content" css={cssContent}>
+      <div className="card-content" css={[cardContentStyle, cssContent]}>
         {children}
       </div>
     </div>

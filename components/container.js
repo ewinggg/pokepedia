@@ -4,9 +4,10 @@ import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import { css } from "@emotion/react"
 import media from "../styles/media"
+import { flexCenterStyle } from "../styles/shared"
 
 const containerStyle = css`
-  display: flex;
+  ${flexCenterStyle}
   flex-direction: column;
   align-items: center;
   gap: 50px;
@@ -18,7 +19,7 @@ const containerStyle = css`
     gap: 30px;
   }
   ${media.md} {
-    max-width: 768px;
+    max-width: 900px;
   }
   ${media.xl} {
     max-width: 1024px;

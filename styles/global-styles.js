@@ -38,9 +38,9 @@ const globalStyles = css`
     --dark-purple: #b0afdb;
     --dark-white: #ffffff;
     --light-black: hsla(0, 0%, 0%, 0.05);
-    --light-blue: #5c7aff;
+    --light-blue: #eceef9;
     --light-cyan: #c6eced;
-    --light-green: #03ac0e;
+    --light-green: #c7edca;
     --light-purple: #c9c7ee;
     --light-white: hsla(0, 0%, 100%, 0.5);
 
