@@ -8,7 +8,12 @@ import Pokeball from "./pokeball"
 import If from "./if"
 import { css, Global, keyframes } from "@emotion/react"
 import media from "../styles/media"
-import { borderRadius, flexCenterStyle } from "../styles/shared"
+import {
+  borderRadius,
+  columnStyle,
+  flexCenterStyle,
+  rowStyle,
+} from "../styles/shared"
 import PokemonAbilityList from "./pokemon-ability-list"
 import PokemonAdd from "./pokemon-add"
 import PokemonMoveList from "./pokemon-move-list"
@@ -18,16 +23,70 @@ import { useAppContext } from "../state/context"
 import useCachedImage from "../hooks/useCachedImage"
 import useColors from "../hooks/useColors"
 
-const columnStyle = css`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+const bottomRightStyle = css`
+  ${columnStyle}
+  flex: 1;
 `
 
-const rowStyle = css`
-  display: flex;
-  flex-direction: row;
+const cardContentStyle = css`
+  ${columnStyle}
+  width: 100%;
+  ${media.lg} {
+    ${borderRadius}
+  }
+  ${media.sm} {
+    ${rowStyle}
+  }
+`
+
+const cardStyle = css`
+  padding: 50px;
+  flex: 3;
+  ${media.lg} {
+    ${borderRadius}
+  }
+`
+
+const detailsStyle = css`
+  ${columnStyle}
   gap: 25px;
+  ${media.md} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`
+
+const headerStyle = css`
+  ${columnStyle}
+`
+
+const headingStyle = css`
+  font-size: 25px;
+`
+
+const imageStyle = css`
+  ${flexCenterStyle}
+  flex-direction: column;
+  position: relative;
+  & .shadow {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    background: var(--light-black);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+  }
+`
+
+const mainStyle = css`
+  ${columnStyle}
+  gap: 10px;
+`
+
+const profileStyle = css`
+  ${columnStyle}
+  flex: 1;
 `
 
 const sectionColumnStyle = css`
@@ -41,73 +100,14 @@ const sectionRowStyle = css`
   gap: 15px;
 `
 
-const detailsStyle = css`
-  ${columnStyle}
-  gap: 25px;
-  ${media.md} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-`
-
-const profileStyle = css`
-  ${columnStyle}
-  flex: 1;
-`
-
-const topLeftStyle = css`
-  ${columnStyle}
-  flex: 1;
-`
-
-const bottomRightStyle = css`
-  ${columnStyle}
-  flex: 1;
-`
-
-const headingStyle = css`
-  font-size: 25px;
-`
-
 const textStyle = css`
   font-weight: 500;
   text-transform: lowercase;
 `
 
-const cardStyle = css`
-  padding: 50px;
-  flex: 3;
-  ${media.lg} {
-    ${borderRadius}
-  }
-`
-
-const cardContentStyle = css`
+const topLeftStyle = css`
   ${columnStyle}
-  ${media.sm} {
-    ${rowStyle}
-  }
-`
-
-const mainStyle = css`
-  ${columnStyle}
-  gap: 10px;
-`
-
-const imageStyle = css`
-  ${flexCenterStyle}
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  & .shadow {
-    display: inline-block;
-    width: 200px;
-    height: 40px;
-    background: var(--light-black);
-    border-radius: 50%;
-    position: absolute;
-    bottom: -10px;
-  }
+  flex: 1;
 `
 
 const PokemonDetails = ({ pokemon }) => {
@@ -147,7 +147,7 @@ const PokemonDetails = ({ pokemon }) => {
       <Global styles={bodyStyle} />
       <div css={profileStyle}>
         <div css={topLeftStyle}>
-          <header css={columnStyle}>
+          <header css={headerStyle}>
             <section className="pokemon-image" css={imageStyle}>
               <If condition={!state.isCatched}>
                 <Image

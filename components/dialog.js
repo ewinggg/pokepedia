@@ -35,14 +35,14 @@ const buttonCloseStyle = css`
   right: -10px;
   cursor: pointer;
 `
-const dialogContentStyle = css`
+const cardContentStyle = css`
   ${flexCenterStyle}
   flex-direction: column;
   gap: 25px;
   padding: 25px;
 `
 
-const dialogStyle = css`
+const cardStyle = css`
   ${flexCenterStyle}
   position: fixed;
   width: 80%;
@@ -71,12 +71,12 @@ const Dialog = ({
 
   return (
     <If condition={mounted && typeof window !== "undefined"}>
-      <Portal id="modal">
+      <Portal id="dialog">
         <div css={[backdropStyle, open && openStyle]}>
           <Card
             className="dialog"
-            css={dialogStyle}
-            cssContent={dialogContentStyle}
+            css={cardStyle}
+            cssContent={cardContentStyle}
             withBorder
             withShadow
           >

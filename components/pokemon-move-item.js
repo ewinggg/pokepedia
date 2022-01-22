@@ -8,15 +8,15 @@ import Item from "./item"
 import { css } from "@emotion/react"
 import { borderRadius, thinBorderStyle } from "../styles/shared"
 
+const cardContentStyle = css`
+  ${borderRadius}
+  display: inline-block;
+`
+
 const cardStyle = css`
   ${borderRadius}
   ${thinBorderStyle}
 padding: 3px 5px;
-`
-
-const cardContentStyle = css`
-  ${borderRadius}
-  display: inline-block;
 `
 
 const PokemonMoveItem = ({ pokemonMove }) => (
