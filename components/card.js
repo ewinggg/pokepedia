@@ -37,7 +37,11 @@ const Card = forwardRef((props, ref) => {
       ]}
       {...rest}
     >
-      <div className="card-content" css={[cardContentStyle, cssContent]}>
+      <div
+        className="card-content"
+        css={[cardContentStyle, cssContent]}
+        suppressHydrationWarning
+      >
         {children}
       </div>
     </div>
