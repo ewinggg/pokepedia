@@ -1,12 +1,20 @@
 /** @jsxImportSource @emotion/react */
 
 import PropTypes from "prop-types"
+import { useEffect, useState } from "react"
 import Card from "./card"
 import Close from "./close"
+import If from "./if"
 import { css } from "@emotion/react"
 import Portal from "./portal"
 import media from "../styles/media"
-import { flexCenterStyle, thickBorderStyle } from "../styles/shared"
+import {
+  buttonLabelStyle,
+  buttonsStyle,
+  buttonStyle,
+  flexCenterStyle,
+  thickBorderStyle,
+} from "../styles/shared"
 
 const backdropStyle = css`
   display: none;
@@ -19,7 +27,7 @@ const backdropStyle = css`
   z-index: 10;
 `
 
-const buttonStyle = css`
+const buttonCloseStyle = css`
   ${thickBorderStyle}
   cursor: pointer;
   position: absolute;
@@ -48,29 +56,66 @@ const openStyle = css`
   ${flexCenterStyle}
 `
 
-const Dialog = ({ children, onClose, open }) => (
-  <Portal id="modal">
-    <div css={[backdropStyle, open && openStyle]}>
-      <Card
-        className="dialog"
-        css={dialogStyle}
-        cssContent={dialogContentStyle}
-        withBorder
-        withShadow
-      >
-        {children}
-        <button type="button" onClick={onClose} css={buttonStyle}>
-          <Close />
-        </button>
-      </Card>
-    </div>
-  </Portal>
-)
+const Dialog = ({
+  children,
+  onCancel,
+  cancelText,
+  onConfirm,
+  confirmText,
+  open,
+  withButtons,
+}) => {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  return (
+    <If condition={mounted && typeof window !== "undefined"}>
+      <Portal id="modal">
+        <div css={[backdropStyle, open && openStyle]}>
+          <Card
+            className="dialog"
+            css={dialogStyle}
+            cssContent={dialogContentStyle}
+            withBorder
+            withShadow
+          >
+            <button type="button" onClick={onCancel} css={buttonCloseStyle}>
+              <Close />
+            </button>
+            {children}
+            <If condition={withButtons}>
+              <section css={buttonsStyle}>
+                <button css={buttonStyle} onClick={onCancel}>
+                  <span css={buttonLabelStyle}>{cancelText}</span>
+                </button>
+                <button css={buttonStyle}>
+                  <span css={buttonLabelStyle} onClick={onConfirm}>
+                    {confirmText}
+                  </span>
+                </button>
+              </section>
+            </If>
+          </Card>
+        </div>
+      </Portal>
+    </If>
+  )
+}
+
+Dialog.defaultProps = {
+  cancelText: "Cancel",
+  confirmText: "Confirm",
+  withButtons: true,
+}
 
 Dialog.propTypes = {
+  cancelText: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
-  onClose: PropTypes.func.isRequired,
+  confirmText: PropTypes.string,
+  onCancel: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  withButtons: PropTypes.oneOf([true, false, undefined]),
 }
 
 export default Dialog
