@@ -27,7 +27,6 @@ const Pokemons = ({ initialPokemons }) => {
           name="description"
           content="Managed and distributed by Oak Pokémon Research Lab"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <PokemonList pokemons={pokemons} />
       <If condition={loading}>

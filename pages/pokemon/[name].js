@@ -11,7 +11,6 @@ const Pokemon = ({ pokemon }) => (
         name="description"
         content={`The complete information about ${pokemon.name}`}
       />
-      <link rel="icon" href="/favicon.ico" />
     </Head>
     <PokemonDetails pokemon={pokemon} />
   </>
