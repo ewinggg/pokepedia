@@ -33,7 +33,8 @@ const cardStyle = css`
   transition: all 0.25s;
   box-shadow: 9px 10px 0 var(--dark-green);
   transform: skew(-5deg);
-  &:hover {
+  cursor: pointer;
+  &:active {
     box-shadow: none;
     transform: skew(-5deg) translateX(5px);
   }
@@ -42,9 +43,10 @@ const cardStyle = css`
 const cardContentStyle = css`
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 6px 10px 5px 35px;
   transform: skew(5deg);
-
+  width: 100%;
   &:hover svg {
     animation: ${rotate} ease-in-out 0.5s;
     animation-delay: 0.05s;
