@@ -13,6 +13,7 @@ import {
   buttonsStyle,
   buttonStyle,
   flexCenterStyle,
+  overlapStyle,
   thickBorderStyle,
 } from "../styles/shared"
 
@@ -28,11 +29,11 @@ const backdropStyle = css`
 `
 
 const buttonCloseStyle = css`
+  ${overlapStyle}
   ${thickBorderStyle}
-  cursor: pointer;
-  position: absolute;
   top: -15px;
   right: -10px;
+  cursor: pointer;
 `
 const dialogContentStyle = css`
   ${flexCenterStyle}

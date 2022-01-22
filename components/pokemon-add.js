@@ -10,11 +10,11 @@ import { adoptPokemon, catchPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
+  bigTextStyle,
   borderRadius,
   buttonLabelStyle,
   buttonStyle,
   flexCenterStyle,
-  headingTextStyle,
   thinBorderStyle,
 } from "../styles/shared"
 
@@ -27,7 +27,7 @@ const errorStyle = css`
 `
 
 const headingStyle = css`
-  ${headingTextStyle}
+  ${bigTextStyle}
 `
 
 const inputStyle = css`

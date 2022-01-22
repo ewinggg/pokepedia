@@ -7,15 +7,14 @@ import { releasePokemon, selectPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
+  bigTextStyle,
   borderRadius,
-  headingTextStyle,
   overlapStyle,
-  textShadowStyle,
   thinBorderStyle,
 } from "../styles/shared"
 
 const headingStyle = css`
-  ${headingTextStyle}
+  ${bigTextStyle}
 `
 
 const overlapButtonLabelStyle = css`

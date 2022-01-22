@@ -82,6 +82,7 @@ const miniCardStyle = css`
     ${thinBorderStyle}
     border-radius: 20px;
     ${overlapStyle}
+    background-color: var(--dark-white);
   }
   & .content {
     display: inline-block;

@@ -7,6 +7,7 @@ import List from "./list"
 import routes from "../utils/routes"
 import { css, keyframes } from "@emotion/react"
 import {
+  bigTextStyle,
   buttonTextStyle,
   flexCenterStyle,
   textShadowStyle,
@@ -65,7 +66,7 @@ const listStyle = css`
 `
 
 const routeStyle = css`
-  ${buttonTextStyle}
+  ${bigTextStyle}
   ${textShadowStyle}
 `
 

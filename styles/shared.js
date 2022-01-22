@@ -3,7 +3,7 @@ import { css } from "@emotion/react"
 export const borderRadius = css`
   border-radius: 20px;
 `
-export const buttonTextStyle = css`
+export const bigTextStyle = css`
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
@@ -31,20 +31,14 @@ export const thinBorderStyle = css`
   border: 2px solid var(--dark-black);
 `
 
-export const headingTextStyle = css`
-  ${buttonTextStyle}
-  font-weight: 700;
-`
-
 export const overlapStyle = css`
   position: absolute;
-  right: -15px;
   top: -30px;
-  background-color: var(--dark-white);
+  right: -15px;
 `
 
 export const buttonLabelStyle = css`
-  ${buttonTextStyle}
+  ${bigTextStyle}
   ${flexCenterStyle}
   ${smallReverseSkewStyle}
   ${textShadowStyle}
