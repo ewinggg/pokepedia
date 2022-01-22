@@ -47,7 +47,7 @@ const openStyle = css`
   ${flexCenterStyle}
 `
 
-const Dialog = ({ children, handleClose, open }) => {
+const Dialog = ({ children, onClose, open }) => {
   return (
     <div css={[backdropStyle, open && openStyle]}>
       <Card
@@ -58,7 +58,7 @@ const Dialog = ({ children, handleClose, open }) => {
         withShadow
       >
         {children}
-        <button type="button" onClick={handleClose} css={buttonStyle}>
+        <button type="button" onClick={onClose} css={buttonStyle}>
           <Close />
         </button>
       </Card>
@@ -68,7 +68,7 @@ const Dialog = ({ children, handleClose, open }) => {
 
 Dialog.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
-  handleClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
 }
 

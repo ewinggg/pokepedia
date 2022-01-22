@@ -1,4 +1,9 @@
-import { CATCH_POKEMON, TOGGLE_DIALOG } from "./action-types"
+import { ADOPT_POKEMON, CATCH_POKEMON, TOGGLE_DIALOG } from "./action-types"
+
+export const adoptPokemon = (pokemon) => ({
+  type: ADOPT_POKEMON,
+  payload: pokemon,
+})
 
 export const catchPokemon = (isCatched) => ({
   type: CATCH_POKEMON,
