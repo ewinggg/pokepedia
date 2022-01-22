@@ -73,6 +73,7 @@ const headerStyle = css`
 
 const miniCardStyle = css`
   ${borderRadius}
+  display: flex;
   align-items: center;
   background-color: var(--bgColor);
   padding: 3px 5px;

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react"
+import { createContext, useContext, useEffect, useReducer } from "react"
 import appReducer from "./reducer"
 
 const AppContext = createContext()
@@ -11,10 +11,18 @@ const AppProvider = ({ children }) => {
     selectedPokemon: {},
   }
 
-  const [state, dispatch] = useReducer(appReducer, initialState)
-  const value = { ...state, dispatch }
+  const localState = JSON.parse(localStorage.getItem("kepomon-state"))
+  const [state, dispatch] = useReducer(appReducer, localState || initialState)
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
+  useEffect(() => {
+    localStorage.setItem("kepomon-state", JSON.stringify(state))
+  }, [state])
+
+  return (
+    <AppContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </AppContext.Provider>
+  )
 }
 
 const useAppContext = () => {
