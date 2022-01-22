@@ -35,3 +35,10 @@ export const headingTextStyle = css`
   ${buttonTextStyle}
   font-weight: 700;
 `
+
+export const overlapStyle = css`
+  position: absolute;
+  right: -15px;
+  top: -30px;
+  background-color: var(--dark-white);
+`
