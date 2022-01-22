@@ -16,6 +16,12 @@ const Rock = dynamic(() => import("../components/icon/types/rock"))
 const Steel = dynamic(() => import("../components/icon/types/steel"))
 const Water = dynamic(() => import("../components/icon/types/water"))
 
+/**
+ * Hook to generate/map pokemon type icon
+ * @param {String} type The given key of object
+ * @returns {Element} The selected icon
+ */
+
 const usePokemonTypesIcon = (type) => {
   const icons = {
     bug: <Bug size={1} />,

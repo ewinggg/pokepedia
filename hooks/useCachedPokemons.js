@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
 
-const useCachedPokemons = (initialPokemons) => {
-  // Local storage key
-  const key = "pokemons"
+/**
+ * Hook to cache pokemons data
+ * @param {Array} initialPokemons The Array of pokemon objects
+ * @returns {Array} The Array of pokemon objects
+ */
 
+const useCachedPokemons = (initialPokemons) => {
+  const key = "pokemons"
   const [pokemons, setPokemons] = useState(initialPokemons)
 
   useEffect(() => {
@@ -17,6 +21,7 @@ const useCachedPokemons = (initialPokemons) => {
     if (cachedPokemons?.length > 0) {
       setPokemons(cachedPokemons)
 
+      // We got the data already. Retrieve!
       return pokemons
     }
 

@@ -10,6 +10,7 @@ import usePokemons from "../hooks/usePokemons"
 
 const Pokemons = ({ initialPokemons }) => {
   // Set initial pokemons data from the server
+  // and fetch another pokemons data in the client
   const data = usePokemons(initialPokemons)
   const { loading, error, pokemons, getPokemons } = data
 
