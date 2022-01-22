@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import Card from "./card"
 import Close from "./close"
 import { css } from "@emotion/react"
+import Portal from "./portal"
 import media from "../styles/media"
 import { flexCenterStyle, thickBorderStyle } from "../styles/shared"
 
@@ -14,7 +15,7 @@ const backdropStyle = css`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 10;
 `
 
@@ -47,8 +48,8 @@ const openStyle = css`
   ${flexCenterStyle}
 `
 
-const Dialog = ({ children, onClose, open }) => {
-  return (
+const Dialog = ({ children, onClose, open }) => (
+  <Portal id="modal">
     <div css={[backdropStyle, open && openStyle]}>
       <Card
         className="dialog"
@@ -63,8 +64,8 @@ const Dialog = ({ children, onClose, open }) => {
         </button>
       </Card>
     </div>
-  )
-}
+  </Portal>
+)
 
 Dialog.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
