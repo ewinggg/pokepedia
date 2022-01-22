@@ -115,12 +115,13 @@ const PokemonDetails = ({ pokemon }) => {
     image: initialImage,
     sprites,
     name,
+    types,
     height,
     weight,
     base_experience,
+    abilities,
     stats,
     moves,
-    types,
   } = pokemon
   // Set profile image from cached or request
   const image = useCachedImage(name, initialImage)
