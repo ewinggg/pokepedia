@@ -11,6 +11,7 @@ import PokemonAbilityList from "./pokemon-ability-list"
 import PokemonMoveList from "./pokemon-move-list"
 import PokemonStatList from "./pokemon-stat-list"
 import PokemonTypeList from "./pokemon-type-list"
+import useCachedImage from "../hooks/useCachedImage"
 import useColors from "../hooks/useColors"
 
 const columnStyle = css`
@@ -105,7 +106,7 @@ const imageStyle = css`
 const PokemonDetails = ({ pokemon }) => {
   const {
     id,
-    img,
+    image: initialImage,
     sprites,
     name,
     height,
@@ -115,7 +116,9 @@ const PokemonDetails = ({ pokemon }) => {
     moves,
     types,
   } = pokemon
-  const profileImage = img ?? sprites.front_default
+  // Set profile image from cached or request
+  const image = useCachedImage(name, initialImage)
+  const profileImage = image ?? sprites.front_default
 
   // Get random color based on pokemon id
   const flag = id % 3

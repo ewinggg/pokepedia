@@ -80,7 +80,7 @@ const PokemonCard = ({ pokemon }) => {
       <Link
         href={{
           pathname: "pokemon/[name]",
-          query: { img: pokemon.dreamworld },
+          query: { image: pokemon.artwork },
         }}
         as={`/pokemon/${pokemon.name}`}
         passHref={true}
