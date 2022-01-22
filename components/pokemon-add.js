@@ -5,6 +5,7 @@ import { useState } from "react"
 import Heading from "./heading"
 import If from "./if"
 import Dialog from "./dialog"
+import useCachedImage from "../hooks/useCachedImage"
 import { adoptPokemon, catchPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
@@ -26,12 +27,17 @@ const buttonLabelStyle = css`
   margin: 6px -10px 5px 20px;
 `
 
+const inputHeadingStyle = css`
+  text-transform: unset;
+`
+
 const buttonStyle = css`
   ${boxShadowStyle}
   ${borderRadius}
   ${thinBorderStyle}
   background-color: var(--dark-white);
   padding: 0;
+  width: 100%;
   cursor: pointer;
   transition: all 0.25s;
   &:active {
@@ -80,6 +86,11 @@ const PokemonAdd = ({ pokemon }) => {
   const { state, dispatch } = useAppContext()
   const { dialogOpen, isCatched, ownedPokemons } = state
 
+  // Get pokemon image from cached or request
+  const initialImage = pokemon.image
+  const cachedImage = useCachedImage(pokemon.name, initialImage)
+  const image = cachedImage ?? pokemon.sprites.front_default
+
   // State for storing nickname and its error message
   const [nickname, setNickname] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
@@ -104,15 +115,21 @@ const PokemonAdd = ({ pokemon }) => {
     const isAdopted = isAdoptedPokemon(nickname)
 
     // Adopt new pokemon
-    if (!isAdopted) {
-      const newPokemon = { ...pokemon, nickname }
+    if (!isAdopted && nickname) {
+      const newPokemon = { ...pokemon, image, nickname }
       dispatch(adoptPokemon(newPokemon))
       handleClose()
 
       return
     }
+
+    if (!nickname) {
+      setErrorMessage("The nickname can't be empty")
+      return
+    }
+
     // Otherwise, set error message
-    setErrorMessage("The nickname is already taken!")
+    setErrorMessage("This nickname is already taken!")
   }
 
   // Handle click for catching pokemon
@@ -152,7 +169,7 @@ const PokemonAdd = ({ pokemon }) => {
             You got the Pokémon!
           </Heading>
           <section css={inputWrapperStyle}>
-            <Heading level={3}>
+            <Heading level={3} css={inputHeadingStyle}>
               <If condition={errorMessage === ""}>
                 Give your new Pokémon a nickname!
               </If>
