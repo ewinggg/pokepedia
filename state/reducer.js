@@ -1,4 +1,10 @@
-import { ADOPT_POKEMON, CATCH_POKEMON, TOGGLE_DIALOG } from "./action-types"
+import {
+  ADOPT_POKEMON,
+  CATCH_POKEMON,
+  RELEASE_POKEMON,
+  SELECT_POKEMON,
+  TOGGLE_DIALOG,
+} from "./action-types"
 
 const appReducer = (state, action) => {
   switch (action.type) {
@@ -10,6 +16,16 @@ const appReducer = (state, action) => {
     }
     case CATCH_POKEMON: {
       return { ...state, isCatched: action.payload }
+    }
+    case RELEASE_POKEMON: {
+      const pokemons = state.ownedPokemons.filter(
+        (pokemon) => pokemon.nickname !== action.payload.nickname
+      )
+
+      return { ...state, ownedPokemons: pokemons }
+    }
+    case SELECT_POKEMON: {
+      return { ...state, selectedPokemon: action.payload }
     }
     case TOGGLE_DIALOG: {
       return { ...state, dialogOpen: !state.dialogOpen }

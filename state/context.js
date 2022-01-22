@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
     isCatched: false,
     dialogOpen: false,
     ownedPokemons: [],
+    selectedPokemon: {},
   }
 
   const [state, dispatch] = useReducer(appReducer, initialState)

@@ -3,7 +3,7 @@
 import PropTypes from "prop-types"
 import Heading from "./heading"
 import Dialog from "./dialog"
-import { adoptPokemon, catchPokemon, toggleDialog } from "../state/actions"
+import { releasePokemon, selectPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
@@ -67,27 +67,36 @@ const overlapButtonStyle = css`
 
 const PokemonDelete = ({ pokemon }) => {
   const { state, dispatch } = useAppContext()
-  const { dialogOpen, isCatched, ownedPokemons } = state
+  const { dialogOpen, selectedPokemon } = state
 
   const handleRelease = (event) => {
     event.preventDefault()
+
+    dispatch(releasePokemon(selectedPokemon))
+    dispatch(toggleDialog())
   }
 
   // Handle confirm to open dialog
-  const handleConfirm = (event) => {
+  const handleConfirm = (event, emon) => {
     event.preventDefault()
-    dispatch(toggleDialog(true))
+
+    dispatch(selectPokemon(emon))
+    dispatch(toggleDialog())
   }
 
   // Handle close dialog
   const handleClose = (event) => {
     event.preventDefault()
-    dispatch(toggleDialog(false))
+
+    dispatch(toggleDialog())
   }
 
   return (
     <>
-      <button css={overlapButtonStyle} onClick={handleConfirm}>
+      <button
+        css={overlapButtonStyle}
+        onClick={(event) => handleConfirm(event, pokemon)}
+      >
         <span css={overlapButtonLabelStyle}>Release</span>
       </button>
       <Dialog open={dialogOpen} onClose={handleClose}>
