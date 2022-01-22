@@ -11,7 +11,9 @@ const AppProvider = ({ children }) => {
     selectedPokemon: {},
   }
 
-  const localState = JSON.parse(localStorage.getItem("kepomon-state"))
+  const isClient = typeof window !== "undefined"
+  const cachedState = isClient ? localStorage.getItem("pokepedia-state") : null
+  const localState = JSON.parse(cachedState)
   const [state, dispatch] = useReducer(appReducer, localState || initialState)
 
   useEffect(() => {
