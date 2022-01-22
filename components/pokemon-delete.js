@@ -13,17 +13,13 @@ import {
   thinBorderStyle,
 } from "../styles/shared"
 
-const headingStyle = css`
-  ${bigTextStyle}
-`
-
-const overlapButtonLabelStyle = css`
+const buttonLabelStyle = css`
   ${borderRadius}
   font-size: 12px;
   font-weight: 700;
 `
 
-const overlapButtonStyle = css`
+const buttonStyle = css`
   ${borderRadius}
   ${overlapStyle}
   ${thinBorderStyle}
@@ -31,6 +27,10 @@ const overlapButtonStyle = css`
   &:hover {
     color: var(--light-blue);
   }
+`
+
+const headingStyle = css`
+  ${bigTextStyle}
 `
 
 const PokemonDelete = ({ pokemon }) => {
@@ -62,10 +62,10 @@ const PokemonDelete = ({ pokemon }) => {
   return (
     <>
       <button
-        css={overlapButtonStyle}
+        css={buttonStyle}
         onClick={(event) => handleConfirm(event, pokemon)}
       >
-        <span css={overlapButtonLabelStyle}>Release</span>
+        <span css={buttonLabelStyle}>Release</span>
       </button>
       <Dialog
         open={dialogOpen}

@@ -40,7 +40,6 @@ export const overlapStyle = css`
 export const buttonLabelStyle = css`
   ${bigTextStyle}
   ${flexCenterStyle}
-  ${smallReverseSkewStyle}
   ${textShadowStyle}
   margin: 6px -10px 5px 20px;
 `
@@ -52,7 +51,6 @@ export const buttonsStyle = css`
 
 export const buttonStyle = css`
   ${boxShadowStyle}
-  ${smallSkewStyle}
   ${thinBorderStyle}
   background-color: var(--dark-white);
   padding: 0;
