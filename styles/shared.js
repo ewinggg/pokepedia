@@ -30,3 +30,8 @@ export const thickBorderStyle = css`
 export const thinBorderStyle = css`
   border: 2px solid var(--dark-black);
 `
+
+export const headingTextStyle = css`
+  ${buttonTextStyle}
+  font-weight: 700;
+`
