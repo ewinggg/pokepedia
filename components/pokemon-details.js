@@ -7,6 +7,7 @@ import Heading from "../components/heading"
 import If from "./if"
 import { css, Global } from "@emotion/react"
 import media from "../styles/media"
+import PokemonAbilityList from "./pokemon-ability-list"
 import PokemonStatList from "./pokemon-stat-list"
 import PokemonTypeList from "./pokemon-type-list"
 import useColors from "../hooks/useColors"
@@ -25,7 +26,7 @@ const rowStyle = css`
 
 const sectionColumnStyle = css`
   ${columnStyle}
-  gap: 15px;
+  gap: 10px;
 `
 
 const sectionRowStyle = css`
@@ -59,6 +60,9 @@ const cardStyle = css`
 
 const cardContentStyle = css`
   ${columnStyle}
+  ${media.sm} {
+    ${rowStyle}
+  }
   transform: skew(5deg);
 `
 
@@ -152,18 +156,24 @@ const PokemonDetails = ({ pokemon }) => {
             </section>
           </main>
         </div>
-        <div>
-          <Card
-            css={cardStyle}
-            cssContent={cardContentStyle}
-            withBorder
-            withShadow
-          >
+        <Card
+          css={cardStyle}
+          cssContent={cardContentStyle}
+          withBorder
+          withShadow
+        >
+          <div css={columnStyle}>
             <section className="pokemon-experience" css={sectionRowStyle}>
               <Heading level={2} css={headingStyle}>
                 Base Experience
                 <span css={textStyle}>{`(${base_experience})`}</span>
               </Heading>
+            </section>
+            <section className="pokemon-abilities" css={sectionColumnStyle}>
+              <Heading level={2} css={headingStyle}>
+                Abilities
+              </Heading>
+              <PokemonAbilityList pokemonAbilities={abilities} />
             </section>
             <section className="pokemon-stats" css={sectionColumnStyle}>
               <Heading level={2} css={headingStyle}>
@@ -171,8 +181,9 @@ const PokemonDetails = ({ pokemon }) => {
               </Heading>
               <PokemonStatList pokemonStats={stats} />
             </section>
-          </Card>
-        </div>
+          </div>
+          <div css={columnStyle}>bottom right</div>
+        </Card>
       </div>
     </If>
   )
