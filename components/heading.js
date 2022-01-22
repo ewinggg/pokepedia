@@ -9,6 +9,8 @@ import { css } from "@emotion/react"
 const headingStyle = css`
   font-size: 100%;
   margin: 0;
+  text-transform: capitalize;
+  color: var(--dark-black);
 `
 
 const Heading = forwardRef((props, ref) => {
