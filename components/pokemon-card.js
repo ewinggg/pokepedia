@@ -2,17 +2,42 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import PropTypes from "prop-types"
 import Card from "./card"
 import If from "./if"
 import Heading from "./heading"
 import useColors from "../hooks/useColors"
+import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
   borderRadius,
   textShadowStyle,
   thinBorderStyle,
 } from "../styles/shared"
+
+const overlapStyle = css`
+  position: absolute;
+  right: -15px;
+  top: -30px;
+  background-color: var(--dark-white);
+`
+
+const buttonLabelStyle = css`
+  ${borderRadius}
+  font-size: 12px;
+  font-weight: 700;
+`
+
+const buttonStyle = css`
+  ${bigSkewStyle}
+  ${overlapStyle}
+  ${thinBorderStyle}
+  cursor: pointer;
+  &:hover {
+    color: var(--light-blue);
+  }
+`
 
 const cardContentStyle = css`
   ${borderRadius}
@@ -75,12 +100,9 @@ const miniCardStyle = css`
   z-index: 1;
   border: none;
   &.counter {
-    position: absolute;
-    right: -50px;
-    top: -30px;
     ${thinBorderStyle}
     border-radius: 20px;
-    background-color: var(--dark-white);
+    ${overlapStyle}
   }
   & .content {
     display: inline-block;
@@ -90,6 +112,16 @@ const miniCardStyle = css`
 `
 
 const PokemonCard = ({ pokemon }) => {
+  const router = useRouter()
+  const { state } = useAppContext()
+  const { ownedPokemons } = state
+
+  const isCollectionPage = router?.pathname === "/collection"
+  console.log(isCollectionPage)
+
+  // Get owned state for each pokemon
+  const owned = ownedPokemons.filter(({ id }) => id === pokemon.id).length
+
   const { light, dark } = useColors("white")
 
   // Get pokemon image
@@ -100,7 +132,7 @@ const PokemonCard = ({ pokemon }) => {
       <Link
         href={{
           pathname: "pokemon/[name]",
-          query: { image: pokemon.artwork },
+          query: { image },
         }}
         as={`/pokemon/${pokemon.name}`}
         passHref={true}
@@ -129,11 +161,31 @@ const PokemonCard = ({ pokemon }) => {
               >
                 {`Owned: ${0}`}
               </Card>
+              <If condition={!isCollectionPage}>
+                <Card
+                  className="counter"
+                  css={miniCardStyle}
+                  cssContent={miniCardContentStyle}
+                  style={{ "--bgColor": dark }}
+                >
+                  {`Owned: ${owned}`}
+                </Card>
+              </If>
+              <If condition={isCollectionPage}>
+                <button css={buttonStyle}>
+                  <span css={buttonLabelStyle}>Release</span>
+                </button>
+              </If>
             </header>
             <main css={mainStyle}>
               <Image src={image} alt={pokemon.name} width={100} height={100} />
               <Heading level={2} css={headingStyle}>
-                {pokemon.name}
+                <span>
+                  <If condition={pokemon.nickname !== undefined}>
+                    {`${pokemon.nickname} the `}
+                  </If>
+                  {pokemon.name}
+                </span>
               </Heading>
             </main>
           </Card>
