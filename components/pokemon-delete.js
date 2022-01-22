@@ -8,42 +8,11 @@ import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
   borderRadius,
-  boxShadowStyle,
-  buttonTextStyle,
-  flexCenterStyle,
   headingTextStyle,
   overlapStyle,
   textShadowStyle,
   thinBorderStyle,
 } from "../styles/shared"
-
-const buttonLabelStyle = css`
-  ${buttonTextStyle}
-  ${flexCenterStyle}
-  ${borderRadius}
-  ${textShadowStyle}
-  margin: 6px -10px 5px 20px;
-`
-
-const buttonsStyles = css`
-  display: flex;
-  gap: 30px;
-`
-
-const buttonStyle = css`
-  ${boxShadowStyle}
-  ${borderRadius}
-  ${thinBorderStyle}
-  background-color: var(--dark-white);
-  padding: 0;
-  width: 100%;
-  cursor: pointer;
-  transition: all 0.25s;
-  &:active {
-    box-shadow: none;
-    transform: skew(-5deg) translateX(5px);
-  }
-`
 
 const headingStyle = css`
   ${headingTextStyle}
@@ -99,20 +68,16 @@ const PokemonDelete = ({ pokemon }) => {
       >
         <span css={overlapButtonLabelStyle}>Release</span>
       </button>
-      <Dialog open={dialogOpen} onClose={handleClose}>
+      <Dialog
+        open={dialogOpen}
+        onCancel={handleClose}
+        cancelText="Keep"
+        onConfirm={handleRelease}
+        confirmText="Release"
+      >
         <Heading level={2} css={headingStyle}>
           Are you sure to release this Pokémon?
         </Heading>
-        <section css={buttonsStyles}>
-          <button css={buttonStyle}>
-            <span css={buttonLabelStyle} onClick={handleClose}>
-              Keep
-            </span>
-          </button>
-          <button css={buttonStyle} onClick={handleRelease}>
-            <span css={buttonLabelStyle}>Release</span>
-          </button>
-        </section>
       </Dialog>
     </>
   )

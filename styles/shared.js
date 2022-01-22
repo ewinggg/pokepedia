@@ -42,3 +42,31 @@ export const overlapStyle = css`
   top: -30px;
   background-color: var(--dark-white);
 `
+
+export const buttonLabelStyle = css`
+  ${buttonTextStyle}
+  ${flexCenterStyle}
+  ${smallReverseSkewStyle}
+  ${textShadowStyle}
+  margin: 6px -10px 5px 20px;
+`
+
+export const buttonsStyle = css`
+  display: flex;
+  gap: 30px;
+`
+
+export const buttonStyle = css`
+  ${boxShadowStyle}
+  ${smallSkewStyle}
+  ${thinBorderStyle}
+  background-color: var(--dark-white);
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.25s;
+  &:active {
+    box-shadow: none;
+    transform: skew(-5deg) translateX(5px);
+  }
+`

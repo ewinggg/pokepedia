@@ -11,39 +11,15 @@ import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
   borderRadius,
-  boxShadowStyle,
-  buttonTextStyle,
+  buttonLabelStyle,
+  buttonStyle,
   flexCenterStyle,
   headingTextStyle,
-  textShadowStyle,
   thinBorderStyle,
 } from "../styles/shared"
 
-const buttonLabelStyle = css`
-  ${buttonTextStyle}
-  ${flexCenterStyle}
-  ${borderRadius}
-  ${textShadowStyle}
-  margin: 6px -10px 5px 20px;
-`
-
 const inputHeadingStyle = css`
   text-transform: unset;
-`
-
-const buttonStyle = css`
-  ${boxShadowStyle}
-  ${borderRadius}
-  ${thinBorderStyle}
-  background-color: var(--dark-white);
-  padding: 0;
-  width: 100%;
-  cursor: pointer;
-  transition: all 0.25s;
-  &:active {
-    box-shadow: none;
-    transform: skew(-5deg) translateX(5px);
-  }
 `
 
 const errorStyle = css`
@@ -75,11 +51,6 @@ const inputWrapperStyle = css`
   ${flexCenterStyle}
   flex-direction: column;
   gap: 15px;
-`
-
-const buttonsStyles = css`
-  display: flex;
-  gap: 30px;
 `
 
 const PokemonAdd = ({ pokemon }) => {
@@ -158,7 +129,14 @@ const PokemonAdd = ({ pokemon }) => {
       <button css={buttonStyle} onClick={handleCatch}>
         <span css={buttonLabelStyle}>Catch Pokémon</span>
       </button>
-      <Dialog open={dialogOpen} onClose={handleClose}>
+      <Dialog
+        open={dialogOpen}
+        onCancel={handleClose}
+        cancelText="Release"
+        onConfirm={handleAdopt}
+        confirmText="Adopt"
+        withButtons={isCatched}
+      >
         <If condition={!isCatched}>
           <Heading level={2} css={headingStyle}>
             Pokémon runs away!
@@ -178,16 +156,6 @@ const PokemonAdd = ({ pokemon }) => {
             <div css={[inputStyle, errorMessage && errorStyle]}>
               <input value={nickname} onChange={handleNickname} autoFocus />
             </div>
-          </section>
-          <section css={buttonsStyles}>
-            <button css={buttonStyle} onClick={handleClose}>
-              <span css={buttonLabelStyle}>Release</span>
-            </button>
-            <button css={buttonStyle}>
-              <span css={buttonLabelStyle} onClick={handleAdopt}>
-                Adopt
-              </span>
-            </button>
           </section>
         </If>
       </Dialog>
