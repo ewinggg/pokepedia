@@ -20,9 +20,14 @@ const backdropStyle = css`
 
 const buttonStyle = css`
   ${thickBorderStyle}
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: -10px;
 `
-
-const dialogContentStyle = css``
+const dialogContentStyle = css`
+  ${flexCenterStyle}
+`
 
 const dialogStyle = css`
   ${flexCenterStyle}
@@ -31,6 +36,7 @@ const dialogStyle = css`
   height: auto;
   ${media.sm} {
     width: 60%;
+    width: 40%;
   }
 `
 
