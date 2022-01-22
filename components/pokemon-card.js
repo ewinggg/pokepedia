@@ -77,7 +77,14 @@ const PokemonCard = ({ pokemon }) => {
 
   return (
     <If condition={typeof pokemon === "object"}>
-      <Link href={`/pokemon/${pokemon.name}`} passHref={true}>
+      <Link
+        href={{
+          pathname: "pokemon/[name]",
+          query: { img: pokemon.dreamworld },
+        }}
+        as={`/pokemon/${pokemon.name}`}
+        passHref={true}
+      >
         <a>
           <Card
             bgColor={dark}
