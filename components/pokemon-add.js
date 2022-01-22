@@ -54,8 +54,7 @@ const inputWrapperStyle = css`
 `
 
 const PokemonAdd = ({ pokemon }) => {
-  const { state, dispatch } = useAppContext()
-  const { dialogOpen, isCatched, ownedPokemons } = state
+  const { dialogOpen, isCatched, ownedPokemons, dispatch } = useAppContext()
 
   // Get pokemon image from cached or request
   const initialImage = pokemon.image

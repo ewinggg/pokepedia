@@ -4,8 +4,7 @@ import PokemonList from "../components/pokemon-list"
 import { useAppContext } from "../state/context"
 
 const Collection = () => {
-  const { state } = useAppContext()
-  const { ownedPokemons } = state
+  const { ownedPokemons } = useAppContext()
 
   return (
     <>

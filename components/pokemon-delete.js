@@ -34,8 +34,7 @@ const headingStyle = css`
 `
 
 const PokemonDelete = ({ pokemon }) => {
-  const { state, dispatch } = useAppContext()
-  const { dialogOpen, selectedPokemon } = state
+  const { dialogOpen, selectedPokemon, dispatch } = useAppContext()
 
   const handleRelease = (event) => {
     event.preventDefault()
