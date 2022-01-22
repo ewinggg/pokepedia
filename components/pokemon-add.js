@@ -38,7 +38,11 @@ const buttonStyle = css`
 
 const headingStyle = css`
   ${headingTextStyle}
-  padding: 10px;
+`
+
+const buttonsStyles = css`
+  display: flex;
+  gap: 30px;
 `
 
 const PokemonAdd = () => {

@@ -27,6 +27,9 @@ const buttonStyle = css`
 `
 const dialogContentStyle = css`
   ${flexCenterStyle}
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px;
 `
 
 const dialogStyle = css`
