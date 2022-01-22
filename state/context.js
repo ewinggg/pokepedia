@@ -5,6 +5,7 @@ const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
   const initialState = {
+    isAmp: false,
     isCatched: false,
     dialogOpen: false,
     ownedPokemons: [],
