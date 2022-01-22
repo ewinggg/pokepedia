@@ -3,7 +3,6 @@
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import { css } from "@emotion/react"
-import media from "../styles/media"
 
 const listStyle = css`
   display: flex;
@@ -12,9 +11,6 @@ const listStyle = css`
   padding: 0;
   margin: 0;
   list-style: none;
-  ${media.sm} {
-    justify-content: space-between;
-  }
   gap: 35px;
   flex-wrap: wrap;
 `

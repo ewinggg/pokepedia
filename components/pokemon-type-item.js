@@ -2,7 +2,7 @@
 
 import PropTypes from "prop-types"
 import Heading from "./heading"
-import Grass from "./icons/types/grass"
+import Grass from "./icon/types/grass"
 import If from "./if"
 import Item from "./item"
 import usePokemonTypesColor from "../hooks/usePokemonTypesColor"
