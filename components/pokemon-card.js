@@ -92,6 +92,9 @@ const miniCardStyle = css`
 const PokemonCard = ({ pokemon }) => {
   const { light, dark } = useColors("white")
 
+  // Get pokemon image
+  const image = pokemon.artwork ?? pokemon.image
+
   return (
     <If condition={typeof pokemon === "object"}>
       <Link
@@ -128,12 +131,7 @@ const PokemonCard = ({ pokemon }) => {
               </Card>
             </header>
             <main css={mainStyle}>
-              <Image
-                src={pokemon.artwork}
-                alt={pokemon.name}
-                width={100}
-                height={100}
-              />
+              <Image src={image} alt={pokemon.name} width={100} height={100} />
               <Heading level={2} css={headingStyle}>
                 {pokemon.name}
               </Heading>
