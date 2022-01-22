@@ -7,7 +7,7 @@ import PokemonTypeItem from "./pokemon-type-item"
 import { css } from "@emotion/react"
 
 const listStyle = css`
-  gap: 5px;
+  gap: 10px;
 `
 
 const PokemonTypeList = ({ pokemonTypes }) => (

@@ -18,7 +18,7 @@ const columnStyle = css`
 const sectionStyle = css`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
 `
 
 const headingStyle = css`
