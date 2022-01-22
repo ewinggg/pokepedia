@@ -4,13 +4,16 @@ import Image from "next/image"
 import PropTypes from "prop-types"
 import Card from "./card"
 import Heading from "../components/heading"
+import Pokeball from "./pokeball"
 import If from "./if"
-import { css, Global } from "@emotion/react"
+import { css, Global, keyframes } from "@emotion/react"
 import media from "../styles/media"
 import PokemonAbilityList from "./pokemon-ability-list"
+import PokemonAdd from "./pokemon-add"
 import PokemonMoveList from "./pokemon-move-list"
 import PokemonStatList from "./pokemon-stat-list"
 import PokemonTypeList from "./pokemon-type-list"
+import { useAppContext } from "../state/context"
 import useCachedImage from "../hooks/useCachedImage"
 import useColors from "../hooks/useColors"
 
@@ -109,6 +112,25 @@ const imageStyle = css`
   }
 `
 
+const shake = keyframes`
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+`
+
+const imageShake = css`
+  animation: ${shake} 0.5s;
+  animation-iteration-count: initial;
+`
+
 const PokemonDetails = ({ pokemon }) => {
   const {
     id,
@@ -123,6 +145,9 @@ const PokemonDetails = ({ pokemon }) => {
     stats,
     moves,
   } = pokemon
+  // Get state from context
+  const { state } = useAppContext()
+
   // Set profile image from cached or request
   const image = useCachedImage(name, initialImage)
   const profileImage = image ?? sprites.front_default
@@ -145,8 +170,23 @@ const PokemonDetails = ({ pokemon }) => {
         <div css={topLeftStyle}>
           <header css={columnStyle}>
             <section className="pokemon-image" css={imageStyle}>
-              <Image src={profileImage} alt={name} width={200} height={200} />
+              <If condition={!state.catch}>
+                <Image
+                  className="image"
+                  css={!state.catch && imageShake}
+                  src={profileImage}
+                  alt={name}
+                  width={200}
+                  height={200}
+                />
+              </If>
+              <If condition={state.catch}>
+                <Pokeball size={12.5} />
+              </If>
               <span className="shadow"></span>
+            </section>
+            <section className="pokemon-add">
+              <PokemonAdd />
             </section>
             <section className="pokemon-name" css={sectionRowStyle}>
               <span css={headingStyle}>
