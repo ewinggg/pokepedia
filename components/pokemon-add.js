@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
+import If from "./if"
 import Dialog from "./dialog"
 import { catchPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
@@ -35,15 +36,22 @@ const buttonStyle = css`
   }
 `
 
+const headingStyle = css`
+  ${headingTextStyle}
+  padding: 10px;
+`
+
 const PokemonAdd = () => {
   const { state, dispatch } = useAppContext()
 
   // Handle click for adding pokemon
   const handleClickAdd = () => {
+    // Probability/Success rate
     const probability = (number) => Math.random() <= number
     const isCatched = probability(0.5)
 
     dispatch(catchPokemon(isCatched))
+    dispatch(toggleDialog())
   }
 
   // Handle close dialog
@@ -57,7 +65,12 @@ const PokemonAdd = () => {
         <span css={buttonLabelStyle}>Catch Pokemon</span>
       </button>
       <Dialog open={state.dialogOpen} handleClose={handleCloseDialog}>
-        tes
+        <If condition={!state.catch}>
+          <span css={headingStyle}>Pokémon runs away!</span>
+        </If>
+        <If condition={state.catch}>
+          <span css={headingStyle}>You got the Pokémon!</span>
+        </If>
       </Dialog>
     </>
   )
