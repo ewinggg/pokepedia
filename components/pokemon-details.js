@@ -149,7 +149,7 @@ const PokemonDetails = ({ pokemon }) => {
         <div css={topLeftStyle}>
           <header css={columnStyle}>
             <section className="pokemon-image" css={imageStyle}>
-              <If condition={!state.catch}>
+              <If condition={!state.isCatched}>
                 <Image
                   className="image"
                   src={profileImage}
@@ -158,7 +158,7 @@ const PokemonDetails = ({ pokemon }) => {
                   height={200}
                 />
               </If>
-              <If condition={state.catch}>
+              <If condition={!state.isCatched}>
                 <Pokeball size={12.5} />
               </If>
               <span className="shadow"></span>

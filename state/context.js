@@ -5,7 +5,7 @@ const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
   const initialState = {
-    catch: false,
+    isCatched: false,
     dialogOpen: false,
   }
 
