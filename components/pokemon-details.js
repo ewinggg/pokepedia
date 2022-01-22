@@ -8,6 +8,7 @@ import If from "./if"
 import { css, Global } from "@emotion/react"
 import media from "../styles/media"
 import PokemonAbilityList from "./pokemon-ability-list"
+import PokemonMoveList from "./pokemon-move-list"
 import PokemonStatList from "./pokemon-stat-list"
 import PokemonTypeList from "./pokemon-type-list"
 import useColors from "../hooks/useColors"
@@ -44,6 +45,16 @@ const detailsStyle = css`
   }
 `
 
+const topLeftStyle = css`
+  ${columnStyle}
+  flex: 1;
+`
+
+const bottomRightStyle = css`
+  ${columnStyle}
+  flex: 1;
+`
+
 const headingStyle = css`
   font-size: 25px;
 `
@@ -55,15 +66,19 @@ const textStyle = css`
 
 const cardStyle = css`
   padding: 50px;
-  transform: skew(-5deg);
+  ${media.lg} {
+    transform: skew(-3deg);
+  }
 `
 
 const cardContentStyle = css`
   ${columnStyle}
+  ${media.lg} {
+    transform: skew(3deg);
+  }
   ${media.sm} {
     ${rowStyle}
   }
-  transform: skew(5deg);
 `
 
 const mainStyle = css`
@@ -91,12 +106,13 @@ const PokemonDetails = ({ pokemon }) => {
   const {
     id,
     img,
+    sprites,
     name,
     height,
     weight,
     base_experience,
     stats,
-    sprites,
+    moves,
     types,
   } = pokemon
   const profileImage = img ?? sprites.front_default
@@ -118,7 +134,7 @@ const PokemonDetails = ({ pokemon }) => {
     <If condition={pokemon && typeof pokemon === "object"}>
       <Global styles={bodyStyle} />
       <div css={detailsStyle}>
-        <div css={columnStyle}>
+        <div css={topLeftStyle}>
           <header css={columnStyle}>
             <section className="pokemon-image" css={imageStyle}>
               <Image src={profileImage} alt={name} width={200} height={200} />
@@ -182,7 +198,14 @@ const PokemonDetails = ({ pokemon }) => {
               <PokemonStatList pokemonStats={stats} />
             </section>
           </div>
-          <div css={columnStyle}>bottom right</div>
+          <div css={bottomRightStyle}>
+            <section className="pokemon-moves" css={sectionColumnStyle}>
+              <Heading level={2} css={headingStyle}>
+                Moves
+              </Heading>
+              <PokemonMoveList pokemonMoves={moves} />
+            </section>
+          </div>
         </Card>
       </div>
     </If>
