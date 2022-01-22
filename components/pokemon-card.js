@@ -21,7 +21,7 @@ const cardContentStyle = css`
   height: 100px;
 `
 
-const baseHeaderStyle = css`
+const headerStyle = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,7 +55,7 @@ const miniCardContentStyle = css`
   font-weight: 700;
 `
 
-const baseMainStyle = css`
+const mainStyle = css`
   position: absolute;
   top: 30px;
   display: flex;
@@ -93,7 +93,7 @@ const PokemonCard = ({ pokemon }) => {
             cssContent={cardContentStyle}
             style={{ "--bgColor": light }}
           >
-            <header css={baseHeaderStyle}>
+            <header css={headerStyle}>
               <Card
                 css={miniCardStyle}
                 cssContent={miniCardContentStyle}
@@ -110,7 +110,7 @@ const PokemonCard = ({ pokemon }) => {
                 {`Owned: ${0}`}
               </Card>
             </header>
-            <main css={baseMainStyle}>
+            <main css={mainStyle}>
               <Image
                 src={pokemon.artwork}
                 alt={pokemon.name}

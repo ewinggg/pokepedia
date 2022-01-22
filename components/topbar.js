@@ -6,7 +6,7 @@ import logo from "../public/logo.png"
 import { css } from "@emotion/react"
 import media from "../styles/media"
 
-const baseStyle = css`
+const topbarStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@ const baseStyle = css`
 `
 
 const Topbar = () => (
-  <header css={baseStyle}>
+  <header css={topbarStyle}>
     <Image src={logo} alt="Pokepedia logo" />
     <Navbar />
   </header>

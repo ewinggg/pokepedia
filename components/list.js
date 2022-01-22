@@ -5,7 +5,7 @@ import { forwardRef } from "react"
 import { css } from "@emotion/react"
 import media from "../styles/media"
 
-const baseStyle = css`
+const listStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@ const List = forwardRef((props, ref) => {
   const { children, css, ...rest } = props
 
   return (
-    <ul ref={ref} css={[baseStyle, css]} {...rest}>
+    <ul ref={ref} css={[listStyle, css]} {...rest}>
       {children}
     </ul>
   )

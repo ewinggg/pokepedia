@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import PropTypes from "prop-types"
+import Heading from "../components/heading"
 import If from "./if"
 import { css } from "@emotion/react"
 import media from "../styles/media"
@@ -49,7 +50,10 @@ const PokemonDetails = ({ pokemon }) => {
               />
               <span className="shadow"></span>
             </div>
-            <h2>name</h2>
+            <div>
+              <span>{`#${String(pokemon.id).padStart(3, "0")}`}</span>
+              <Heading level={1}>{pokemon.name}</Heading>
+            </div>
           </div>
           <div>tes</div>
         </div>

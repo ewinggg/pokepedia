@@ -5,12 +5,12 @@ import Container from "./container"
 import Topbar from "./topbar"
 import { css } from "@emotion/react"
 
-const baseLayoutStyle = css`
+const layoutStyle = css`
   min-height: 100vh;
   height: 100%;
 `
 
-const baseMainStyle = css`
+const mainStyle = css`
   display: flex;
   flex-direction: column;
   gap: 35px;
@@ -18,10 +18,10 @@ const baseMainStyle = css`
 `
 
 const Layout = ({ children }) => (
-  <div className="layout" css={baseLayoutStyle}>
+  <div className="layout" css={layoutStyle}>
     <Container>
       <Topbar />
-      <main css={baseMainStyle}>{children}</main>
+      <main css={mainStyle}>{children}</main>
     </Container>
   </div>
 )

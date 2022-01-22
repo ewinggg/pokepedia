@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import { css } from "@emotion/react"
 
-const baseCardStyle = css`
+const cardStyle = css`
   display: flex;
   border: 4px solid var(--dark-green);
   background-color: var(--light-white);
@@ -35,7 +35,8 @@ const Card = forwardRef((props, ref) => {
       className="card"
       ref={ref}
       css={[
-        baseCardStyle,
+        cardStyle,
+        ,
         withBorder && cardBorderStyle,
         withShadow && cardShadowStyle,
         css,

@@ -12,7 +12,7 @@ const rotate = keyframes`
   }
 `
 
-const baseStyle = css`
+const loadingStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@ const baseStyle = css`
 `
 
 const Loading = () => (
-  <span className="loading" css={baseStyle}>
+  <span className="loading" css={loadingStyle}>
     <Pokeball size={5} />
   </span>
 )

@@ -6,7 +6,7 @@ import { forwardRef } from "react"
 import If from "./if"
 import { css } from "@emotion/react"
 
-const baseStyle = css`
+const headingStyle = css`
   font-size: 100%;
   margin: 0;
 `
@@ -19,7 +19,7 @@ const Heading = forwardRef((props, ref) => {
   const tag = `h${level < 7 ? level : 2}`
 
   // Create dynamic heading
-  const heading = jsx(tag, { css: [baseStyle, css], ref, ...rest }, children)
+  const heading = jsx(tag, { css: [headingStyle, css], ref, ...rest }, children)
 
   return <If condition={typeof children === "string"}>{heading}</If>
 })

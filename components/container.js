@@ -5,7 +5,7 @@ import { forwardRef } from "react"
 import { css } from "@emotion/react"
 import media from "../styles/media"
 
-const baseStyle = css`
+const containerStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@ const Container = forwardRef((props, ref) => {
   const { children, css, ...rest } = props
 
   return (
-    <div className="container" ref={ref} css={[baseStyle, css]} {...rest}>
+    <div className="container" ref={ref} css={[containerStyle, css]} {...rest}>
       {children}
     </div>
   )
