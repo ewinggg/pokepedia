@@ -5,39 +5,18 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import PropTypes from "prop-types"
 import Card from "./card"
-import If from "./if"
 import Heading from "./heading"
+import If from "./if"
+import PokemonDelete from "./pokemon-delete"
 import useColors from "../hooks/useColors"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import {
   borderRadius,
+  overlapStyle,
   textShadowStyle,
   thinBorderStyle,
 } from "../styles/shared"
-
-const overlapStyle = css`
-  position: absolute;
-  right: -15px;
-  top: -30px;
-  background-color: var(--dark-white);
-`
-
-const buttonLabelStyle = css`
-  ${borderRadius}
-  font-size: 12px;
-  font-weight: 700;
-`
-
-const buttonStyle = css`
-  ${bigSkewStyle}
-  ${overlapStyle}
-  ${thinBorderStyle}
-  cursor: pointer;
-  &:hover {
-    color: var(--light-blue);
-  }
-`
 
 const cardContentStyle = css`
   ${borderRadius}
@@ -117,7 +96,6 @@ const PokemonCard = ({ pokemon }) => {
   const { ownedPokemons } = state
 
   const isCollectionPage = router?.pathname === "/collection"
-  console.log(isCollectionPage)
 
   // Get owned state for each pokemon
   const owned = ownedPokemons.filter(({ id }) => id === pokemon.id).length
@@ -172,9 +150,7 @@ const PokemonCard = ({ pokemon }) => {
                 </Card>
               </If>
               <If condition={isCollectionPage}>
-                <button css={buttonStyle}>
-                  <span css={buttonLabelStyle}>Release</span>
-                </button>
+                <PokemonDelete pokemon={pokemon} />
               </If>
             </header>
             <main css={mainStyle}>
