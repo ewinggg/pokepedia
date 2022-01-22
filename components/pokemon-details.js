@@ -46,6 +46,11 @@ const detailsStyle = css`
   }
 `
 
+const profileStyle = css`
+  ${columnStyle}
+  flex: 1;
+`
+
 const topLeftStyle = css`
   ${columnStyle}
   flex: 1;
@@ -67,6 +72,7 @@ const textStyle = css`
 
 const cardStyle = css`
   padding: 50px;
+  flex: 3;
   ${media.lg} {
     transform: skew(-3deg);
   }
@@ -131,12 +137,10 @@ const PokemonDetails = ({ pokemon }) => {
     }
   `
 
-  console.log("pokemon", pokemon)
-
   return (
     <If condition={pokemon && typeof pokemon === "object"}>
       <Global styles={bodyStyle} />
-      <div css={detailsStyle}>
+      <div css={profileStyle}>
         <div css={topLeftStyle}>
           <header css={columnStyle}>
             <section className="pokemon-image" css={imageStyle}>
