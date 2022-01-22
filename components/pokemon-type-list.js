@@ -6,7 +6,7 @@ import List from "./list"
 import PokemonTypeItem from "./pokemon-type-item"
 import { css } from "@emotion/react"
 
-export const listStyle = css`
+const listStyle = css`
   gap: 5px;
 `
 
