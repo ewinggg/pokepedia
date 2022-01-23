@@ -74,3 +74,16 @@ export const rowStyle = css`
   flex-direction: row;
   gap: 25px;
 `
+
+export const sectionStyle = css`
+  ${flexCenterStyle}
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+`
+
+export const headingStyle = css`
+  ${bigTextStyle}
+  font-weight: 700;
+  text-align: center;
+`

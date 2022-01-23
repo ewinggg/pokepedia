@@ -10,11 +10,11 @@ import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import media from "../styles/media"
 import {
-  bigTextStyle,
   borderRadius,
   buttonLabelStyle,
   buttonStyle,
-  flexCenterStyle,
+  headingStyle,
+  sectionStyle,
   thinBorderStyle,
 } from "../styles/shared"
 
@@ -24,12 +24,6 @@ const inputHeadingStyle = css`
 
 const errorStyle = css`
   border: 2px solid red;
-`
-
-const headingStyle = css`
-  ${bigTextStyle}
-  font-weight: 700;
-  text-align: center;
 `
 
 const inputStyle = css`
@@ -51,13 +45,6 @@ const inputStyle = css`
   & input:focus {
     outline: none;
   }
-`
-
-const sectionStyle = css`
-  ${flexCenterStyle}
-  flex-direction: column;
-  gap: 15px;
-  text-align: center;
 `
 
 const PokemonAdd = ({ pokemon }) => {
