@@ -8,6 +8,7 @@ import useCachedImage from "../hooks/useCachedImage"
 import { adoptPokemon, catchPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
+import media from "../styles/media"
 import {
   bigTextStyle,
   borderRadius,
