@@ -1,3 +1,5 @@
-const NotFound = () => <p>Nothing to see here...</p>
+import MessageBox from "../components/message-box"
+
+const NotFound = () => <MessageBox message="Nothing to see here..." />
 
 export default NotFound
