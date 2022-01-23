@@ -1,12 +1,21 @@
+import { useAmp } from "next/amp"
 import Head from "next/head"
 import If from "../../components/if"
 import PokemonDetails from "../../components/pokemon-details"
 import client from "../../graphql/client"
 import { GET_POKEMON } from "../../graphql/query"
 import useMounted from "../../hooks/useMounted"
+import { checkAmp } from "../../state/actions"
+import { useAppContext } from "../../state/context"
+
+// AMP configuration
+export const config = { amp: "hybrid" }
 
 const Pokemon = ({ pokemon }) => {
+  const isAmp = useAmp()
   const mounted = useMounted()
+  const { dispatch } = useAppContext()
+  useEffect(() => dispatch(checkAmp(isAmp)), [])
 
   return (
     <>
