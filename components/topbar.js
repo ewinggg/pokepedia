@@ -6,7 +6,7 @@ import logo from "../public/logo.png"
 import { css } from "@emotion/react"
 import media from "../styles/media"
 
-export const headerStyle = css`
+const headerStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;

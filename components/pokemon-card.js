@@ -22,7 +22,6 @@ import {
 const cardContentStyle = css`
   ${borderRadius}
   position: relative;
-  background-color: var(--light-white);
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -92,6 +91,7 @@ const headerStyle = css`
 const miniCardStyle = css`
   ${borderRadius}
   display: flex;
+  width: 75px;
   align-items: center;
   background-color: var(--bgColor);
   padding: 3px 5px;
