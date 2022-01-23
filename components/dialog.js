@@ -4,11 +4,11 @@ import Close from "./close"
 import If from "./if"
 import { css } from "@emotion/react"
 import Portal from "./portal"
-import media from "../styles/media"
 import {
   buttonLabelStyle,
   buttonsStyle,
   buttonStyle,
+  dialogStyle,
   flexCenterStyle,
   overlapStyle,
   thickBorderStyle,
@@ -40,13 +40,10 @@ const cardContentStyle = css`
 `
 
 const cardStyle = css`
+  ${dialogStyle}
   ${flexCenterStyle}
   position: fixed;
-  width: 80%;
   height: auto;
-  ${media.sm} {
-    width: 400px;
-  }
 `
 
 const openStyle = css`

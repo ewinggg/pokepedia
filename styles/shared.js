@@ -1,4 +1,5 @@
 import { css } from "@emotion/react"
+import media from "./media"
 
 export const borderRadius = css`
   border-radius: 20px;
@@ -44,17 +45,11 @@ export const buttonLabelStyle = css`
   margin: 6px -10px 5px 20px;
 `
 
-export const buttonsStyle = css`
-  display: flex;
-  gap: 30px;
-`
-
 export const buttonStyle = css`
   ${boxShadowStyle}
   ${thinBorderStyle}
   background-color: var(--dark-white);
   padding: 0;
-  width: 100%;
   cursor: pointer;
   transition: all 0.25s;
   &:active {
@@ -86,4 +81,11 @@ export const headingStyle = css`
   ${bigTextStyle}
   font-weight: 700;
   text-align: center;
+`
+
+export const dialogStyle = css`
+  width: 80%;
+  ${media.sm} {
+    width: 400px;
+  }
 `

@@ -109,6 +109,10 @@ const topLeftStyle = css`
   flex: 1;
 `
 
+const sectionCenterStyle = css`
+  align-self: center;
+`
+
 const PokemonDetails = ({ pokemon }) => {
   const {
     id,
@@ -162,7 +166,7 @@ const PokemonDetails = ({ pokemon }) => {
               </If>
               <span className="shadow"></span>
             </section>
-            <section className="pokemon-add">
+            <section className="pokemon-add" css={sectionCenterStyle}>
               <PokemonAdd pokemon={pokemon} />
             </section>
             <section className="pokemon-name" css={sectionRowStyle}>
