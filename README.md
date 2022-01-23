@@ -12,6 +12,9 @@ Managed and distributed by Oak Pokémon Research Lab in Surabaya.
 ![App Screenshot](public/screenshots/catch-pokemon.png)
 ![App Screenshot](public/screenshots/my-pokemon.png)
 
+## Deployed 
+https://pokepedia-ewinggg.vercel.app/
+
 ## Run Locally
 
 Clone the project
