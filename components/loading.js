@@ -25,7 +25,7 @@ const loadingStyle = css`
 `
 
 const Loading = () => (
-  <span className="loading" css={loadingStyle}>
+  <span data-testid="loading" css={loadingStyle}>
     <Pokeball size={5} />
   </span>
 )

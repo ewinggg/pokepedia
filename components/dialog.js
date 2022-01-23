@@ -72,7 +72,7 @@ const Dialog = ({
       <Portal id="dialog">
         <div css={[backdropStyle, open && openStyle]}>
           <Card
-            className="dialog"
+            data-testid="dialog"
             css={cardStyle}
             cssContent={cardContentStyle}
             withBorder

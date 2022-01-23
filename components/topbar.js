@@ -18,7 +18,7 @@ export const headerStyle = css`
 `
 
 const Topbar = () => (
-  <header css={headerStyle}>
+  <header data-testid="topbar" css={headerStyle}>
     <Image src={logo} alt="Pokepedia logo" />
     <Navbar />
   </header>

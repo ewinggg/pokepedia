@@ -69,7 +69,7 @@ const routeStyle = css`
 `
 
 const Navbar = () => (
-  <nav>
+  <nav data-testid="navbar">
     <List css={listStyle}>
       {
         // Iterate each route from routes

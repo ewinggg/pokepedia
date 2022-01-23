@@ -16,7 +16,7 @@ const mainStyle = css`
 `
 
 const Layout = ({ children }) => (
-  <div className="layout" css={layoutStyle}>
+  <div data-testid="layout" css={layoutStyle}>
     <Container>
       <Topbar />
       <main css={mainStyle}>{children}</main>
