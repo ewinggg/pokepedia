@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import { useEffect } from "react"
 import Heading from "../components/heading"
 import If from "../components/if"
+import Pokeball from "../components/pokeball"
 import MessageBox from "../components/message-box"
 import PokemonList from "../components/pokemon-list"
 import useMounted from "../hooks/useMounted"
@@ -60,8 +61,8 @@ const Collection = () => {
       <If condition={mounted}>
         <If condition={ownedPokemons.length === 0}>
           <MessageBox
-            message="You have no Pokemon yet!"
-            clickText="Catch one?"
+            message="Let's catch your first Pokemon!"
+            clickText="Catch Pokemon"
             onClick={handleHome}
           />
         </If>
@@ -77,12 +78,12 @@ const Collection = () => {
             confirmText="Release"
           >
             <Heading level={1} css={headingStyle}>
-              Are you sure to release this Pokemon?
+              Release {nickname}?
             </Heading>
             <section css={sectionStyle}>
               <Image src={image} alt={name} width={100} height={100} />
               <Heading level={2}>
-                {`${nickname ? nickname + " The " : ""} ${name}`}
+                {`${nickname ? nickname + " - " : ""} ${name}`}
               </Heading>
             </section>
           </Dialog>

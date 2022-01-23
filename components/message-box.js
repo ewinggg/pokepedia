@@ -5,6 +5,7 @@ import If from "./if"
 import { css } from "@emotion/react"
 import media from "../styles/media"
 import {
+  borderRadius,
   buttonLabelStyle,
   buttonStyle,
   columnStyle,
@@ -19,6 +20,7 @@ const cardContentStyle = css`
 `
 
 const cardStyle = css`
+  ${borderRadius}
   padding: 25px;
   flex: 3;
   ${dialogStyle}

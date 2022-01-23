@@ -146,12 +146,12 @@ const PokemonAdd = ({ pokemon }) => {
       >
         <If condition={!isCatched}>
           <Heading level={1} css={headingStyle}>
-            Pokémon runs away!
+            Wild {pokemon.name} fled!
           </Heading>
         </If>
         <If condition={isCatched}>
           <Heading level={1} css={headingStyle}>
-            You caught a Pokemon!
+            You caught a {pokemon.name}!
           </Heading>
           <section css={sectionStyle}>
             <Image src={image} alt={pokemon.name} width={100} height={100} />
