@@ -7,9 +7,10 @@ Managed and distributed by Oak Pokémon Research Lab in Surabaya.
 
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1mRNE77U39Vs0tIMh0-prfj2hW6gO2q0Q/view?usp=sharing)
-![App Screenshot](https://drive.google.com/file/d/1yL9oxa6VDhrKJ1A-jVEq-RjoTfgPuJG2/view?usp=sharing)
-![App Screenshot](https://drive.google.com/file/d/1JIL3f4cSwHrdu4ATqlbhkoO6lO51zHng/view?usp=sharing)
+![App Screenshot](public/screenshots/pokemon-list.png)
+![App Screenshot](public/screenshots/pokemon-detail.png)
+![App Screenshot](public/screenshots/catch-pokemon.png)
+![App Screenshot](public/screenshots/my-pokemon.png)
 
 ## Run Locally
 
