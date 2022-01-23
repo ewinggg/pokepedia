@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import PropTypes from "prop-types"

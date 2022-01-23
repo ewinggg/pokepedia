@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import Pokeball from "./pokeball"
 import { css, keyframes } from "@emotion/react"
 import { flexCenterStyle } from "../styles/shared"
@@ -25,7 +27,7 @@ const loadingStyle = css`
 `
 
 const Loading = () => (
-  <span data-testid="loading" css={loadingStyle}>
+  <span className="loading" data-testid="loading" css={loadingStyle}>
     <Pokeball size={5} />
   </span>
 )

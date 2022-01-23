@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import Image from "next/image"
 import PropTypes from "prop-types"
 import Card from "./card"
@@ -152,11 +154,11 @@ const PokemonDetails = ({ pokemon }) => {
   return (
     <If condition={pokemon && typeof pokemon === "object"}>
       <Global styles={bodyStyle} />
-      <div css={profileStyle}>
-        <div css={topLeftStyle}>
+      <div css={detailsStyle}>
+        <div css={profileStyle}>
           <header css={headerStyle}>
             <section className="pokemon-image" css={imageStyle}>
-              <If condition={!isCatched}>
+              <If condition={!isCatched || isCatched}>
                 <Image
                   className="image"
                   src={profileImage}
@@ -164,9 +166,6 @@ const PokemonDetails = ({ pokemon }) => {
                   width={200}
                   height={200}
                 />
-              </If>
-              <If condition={!isCatched}>
-                <Pokeball size={12.5} />
               </If>
               <span className="shadow"></span>
             </section>
@@ -211,7 +210,7 @@ const PokemonDetails = ({ pokemon }) => {
           withBorder
           withShadow
         >
-          <div css={columnStyle}>
+          <div css={topLeftStyle}>
             <section className="pokemon-experience" css={sectionRowStyle}>
               <Heading level={2} css={headingStyle}>
                 Experience

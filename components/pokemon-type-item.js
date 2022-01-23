@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import Heading from "./heading"
 import Grass from "./icon/types/grass"

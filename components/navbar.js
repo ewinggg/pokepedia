@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import Link from "next/link"
 import NavCard from "./navcard"
 import Item from "./item"

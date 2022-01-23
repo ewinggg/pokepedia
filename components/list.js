@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import { forwardRef } from "react"
 import { css } from "@emotion/react"

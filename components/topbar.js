@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import Image from "next/image"
 import Navbar from "./navbar"
 import logo from "../public/logo.png"

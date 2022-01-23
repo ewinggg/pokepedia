@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"

@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import Card from "./card"
 import Close from "./close"
@@ -62,6 +64,7 @@ const Dialog = ({
   <Portal id="dialog">
     <div css={[backdropStyle, open && openStyle]}>
       <Card
+        className="dialog"
         data-testid="dialog"
         css={cardStyle}
         cssContent={cardContentStyle}

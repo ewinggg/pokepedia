@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import PropTypes from "prop-types"
 import Container from "./container"
 import Topbar from "./topbar"
@@ -16,7 +18,7 @@ const mainStyle = css`
 `
 
 const Layout = ({ children }) => (
-  <div data-testid="layout" css={layoutStyle}>
+  <div className="layout" data-testid="layout" css={layoutStyle}>
     <Container>
       <Topbar />
       <main css={mainStyle}>{children}</main>
