@@ -34,10 +34,10 @@ const cardContentStyle = css`
 const cardStyle = css`
   ${borderRadius}
   padding: 25px 25px 70px 25px;
-  background-color: var(--bgColor);
+  background-color: white;
   transition: all 0.25s;
   padding: 25px 25px 70px 25px;
-  box-shadow: 10px 10px 10px 5px #eceef9;
+  box-shadow: 0px 10px 10px 5px #eceef9;
   &:hover {
     transform: translateX(-5px) translateY(-5px);
     box-shadow: 25px 15px 15px #eceef9;
@@ -91,7 +91,7 @@ const headerStyle = css`
 const miniCardStyle = css`
   ${borderRadius}
   display: flex;
-  width: 75px;
+  width: 72px;
   align-items: center;
   background-color: var(--bgColor);
   padding: 3px 5px;

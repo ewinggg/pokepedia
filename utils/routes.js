@@ -1,18 +1,19 @@
 import Pokeball from "../components/pokeball"
 import World from "../components/world"
+import { GiSchoolBag, GiWorld } from "react-icons/gi"
 
 const routes = [
   {
     id: 1,
     path: "/",
-    name: "World",
-    icon: <World size={3} />,
+    name: "Pokemons",
+    icon: <GiWorld size={50} />,
   },
   {
     id: 2,
     path: "/collection",
-    name: "My Pokemons",
-    icon: <Pokeball size={3} />,
+    name: "My Bag",
+    icon: <GiSchoolBag size={50} />,
   },
 ]
 

@@ -15,10 +15,8 @@ import {
   thinBorderStyle,
 } from "../styles/shared"
 
-const baseIconStyle = css`
-  position: absolute;
-  left: -50px;
-  top: -15px;
+const iconColor = css`
+  color: var(--dark-green);
 `
 const baseRouteStyle = css`
   font-size: 20px;
@@ -38,7 +36,7 @@ const rotate = keyframes`
 
 const cardContentStyle = css`
   ${flexCenterStyle}
-  margin: 6px 10px 5px 20px;
+  margin: 5px;
   &:hover svg {
     animation: ${rotate} ease-in-out 0.5s;
     animation-delay: 0.05s;
@@ -56,23 +54,12 @@ const cardStyle = css`
   }
 `
 
-const iconStyle = css`
-  position: absolute;
-  left: -50px;
-  top: -15px;
-`
-
 const listStyle = css`
   gap: 50px;
   ${media.xs} {
     flex-direction: column;
     gap: 25px;
   }
-`
-
-const routeStyle = css`
-  ${bigTextStyle}
-  ${textShadowStyle}
 `
 
 const Navbar = () => (
@@ -85,7 +72,7 @@ const Navbar = () => (
             <Link href={route.path} passHref={true}>
               <a>
                 <NavCard css={cardStyle} cssContent={cardContentStyle}>
-                  <span css={baseIconStyle}>{route.icon}</span>
+                  <span css={iconColor}>{route.icon}</span>
                   <span css={baseRouteStyle}>{route.name}</span>
                 </NavCard>
               </a>

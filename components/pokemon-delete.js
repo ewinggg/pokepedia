@@ -20,7 +20,7 @@ const buttonStyle = css`
   &:hover {
     color: var(--light-red);
   }
-  width: 120px;
+  width: 125px;
   height: 23px;
 `
 
