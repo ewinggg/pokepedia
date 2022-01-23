@@ -25,6 +25,7 @@ const Card = forwardRef((props, ref) => {
   return (
     <div
       className="card"
+      data-testid="card"
       ref={ref}
       css={[
         cardStyle,
