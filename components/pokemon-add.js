@@ -23,7 +23,7 @@ const inputHeadingStyle = css`
 `
 
 const errorStyle = css`
-  border: 2px solid red;
+  border: 2px solid var(--light-red);
 `
 
 const inputStyle = css`
