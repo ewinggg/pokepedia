@@ -1,3 +1,4 @@
+import Image from "next/image"
 import PropTypes from "prop-types"
 import { useState } from "react"
 import Heading from "./heading"
@@ -26,6 +27,7 @@ const errorStyle = css`
 
 const headingStyle = css`
   ${bigTextStyle}
+  font-weight: 700;
 `
 
 const inputStyle = css`
@@ -45,7 +47,7 @@ const inputStyle = css`
   }
 `
 
-const inputWrapperStyle = css`
+const sectionStyle = css`
   ${flexCenterStyle}
   flex-direction: column;
   gap: 15px;
@@ -135,15 +137,21 @@ const PokemonAdd = ({ pokemon }) => {
         withButtons={isCatched}
       >
         <If condition={!isCatched}>
-          <Heading level={2} css={headingStyle}>
+          <Heading level={1} css={headingStyle}>
             Pokémon runs away!
           </Heading>
         </If>
         <If condition={isCatched}>
-          <Heading level={2} css={headingStyle}>
+          <Heading level={1} css={headingStyle}>
             You got the Pokémon!
           </Heading>
-          <section css={inputWrapperStyle}>
+          <section css={sectionStyle}>
+            <Image src={image} alt={pokemon.name} width={100} height={100} />
+            <Heading level={2}>
+              {`${nickname ? nickname + " The " : ""} ${pokemon.name}`}
+            </Heading>
+          </section>
+          <section css={sectionStyle}>
             <Heading level={3} css={inputHeadingStyle}>
               <If condition={errorMessage === ""}>
                 Give your new Pokémon a nickname!

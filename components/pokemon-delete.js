@@ -29,6 +29,7 @@ const buttonStyle = css`
 
 const headingStyle = css`
   ${bigTextStyle}
+  font-weight: 700;
 `
 
 const PokemonDelete = ({ pokemon }) => {
