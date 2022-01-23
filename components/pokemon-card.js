@@ -133,7 +133,7 @@ const PokemonCard = ({ pokemon }) => {
         as={`/pokemon/${pokemon.name}`}
         passHref={true}
       >
-        <a>
+        <a data-testid="link">
           <Card
             bgColor={dark}
             border={4}
@@ -194,7 +194,7 @@ const PokemonCard = ({ pokemon }) => {
               <Heading level={2} css={headingStyle}>
                 <span>
                   <If condition={pokemon.nickname !== undefined}>
-                    {`${pokemon.nickname} the `}
+                    {`${pokemon.nickname} The `}
                   </If>
                   {pokemon.name}
                 </span>
