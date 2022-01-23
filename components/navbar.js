@@ -12,8 +12,9 @@ import { flexCenterStyle, thinBorderStyle } from "../styles/shared"
 const iconColor = css`
   color: var(--dark-green);
 `
+
 const baseRouteStyle = css`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--dark-black);
   text-transform: uppercase;

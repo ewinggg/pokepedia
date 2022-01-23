@@ -12,6 +12,10 @@ class MyDocument extends Document {
         <Head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="theme-color" content="#5c7aff" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+            rel="stylesheet"
+          ></link>
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/maskable_icon_x192.png"></link>
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />

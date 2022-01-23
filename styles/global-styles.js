@@ -6,7 +6,7 @@ const globalStyles = css`
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     line-height: 1;
     background-color: #f6f8fc;
