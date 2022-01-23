@@ -121,7 +121,7 @@ const PokemonCard = ({ pokemon }) => {
   const { light, dark } = useColors("white")
 
   // Get pokemon image
-  const image = pokemon.artwork ?? pokemon.image
+  const image = pokemon.image ?? pokemon.image
 
   return (
     <If condition={typeof pokemon === "object"}>
