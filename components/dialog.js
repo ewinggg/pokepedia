@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import PropTypes from "prop-types"
 import { useEffect, useState } from "react"
 import Card from "./card"

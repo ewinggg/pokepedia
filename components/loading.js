@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import Pokeball from "./pokeball"
 import { css, keyframes } from "@emotion/react"
 import { flexCenterStyle } from "../styles/shared"

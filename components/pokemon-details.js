@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import Image from "next/image"
 import PropTypes from "prop-types"
 import Card from "./card"

@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import PropTypes from "prop-types"
 import Container from "./container"
 import Topbar from "./topbar"
