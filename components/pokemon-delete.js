@@ -15,6 +15,7 @@ const buttonStyle = css`
   ${overlapStyle}
   ${thinBorderStyle}
   cursor: pointer;
+  background-color: var(--dark-white);
   &:hover {
     color: var(--light-blue);
   }
