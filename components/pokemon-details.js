@@ -40,19 +40,16 @@ const cardContentStyle = css`
 `
 
 const cardStyle = css`
+  ${borderRadius}
   padding: 25px;
   flex: 3;
-  ${media.lg} {
-    ${borderRadius}
-    padding: 50px;
-  }
 `
 
 const detailsStyle = css`
   ${columnStyle}
   gap: 25px;
   ${media.md} {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
   }
 `
@@ -63,6 +60,7 @@ const headerStyle = css`
 
 const headingStyle = css`
   font-size: 25px;
+  margin-bottom: 20px;
 `
 
 const imageStyle = css`
@@ -76,7 +74,7 @@ const imageStyle = css`
     background: var(--light-black);
     border-radius: 50%;
     position: absolute;
-    bottom: -10px;
+    bottom: 60px;
   }
 `
 
@@ -95,10 +93,19 @@ const sectionColumnStyle = css`
   gap: 10px;
 `
 
+const topStyle = css`
+  ${media.md} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`
+
 const sectionRowStyle = css`
   ${rowStyle}
   align-items: center;
   gap: 15px;
+  margin-top: 5px;
 `
 
 const textStyle = css`
@@ -147,69 +154,68 @@ const PokemonDetails = ({ pokemon }) => {
   // Set body color dynamically based on pokemon id
   const bodyStyle = css`
     body {
-      background-color: ${light};
+      background-color: white;
     }
   `
 
   return (
     <If condition={pokemon && typeof pokemon === "object"}>
       <Global styles={bodyStyle} />
-      <div css={detailsStyle}>
-        <div css={profileStyle}>
-          <header css={headerStyle}>
-            <section className="pokemon-image" css={imageStyle}>
-              <If condition={!isCatched || isCatched}>
-                <Image
-                  className="image"
-                  src={profileImage}
-                  alt={name}
-                  width={200}
-                  height={200}
-                />
-              </If>
-              <span className="shadow"></span>
-            </section>
-            <section className="pokemon-add" css={sectionCenterStyle}>
-              <PokemonAdd pokemon={pokemon} />
-            </section>
-            <section className="pokemon-name" css={sectionRowStyle}>
-              <span css={headingStyle}>
-                {`#${String(id).padStart(3, "0")}`}
-              </span>
-              <Heading level={1} css={headingStyle}>
-                {name}
-              </Heading>
-            </section>
-          </header>
-          <main css={mainStyle}>
-            <section className="pokemon-type" css={sectionRowStyle}>
-              <Heading level={2}>Type :</Heading>
-              <PokemonTypeList pokemonTypes={types} />
-            </section>
-            <section className="pokemon-height" css={sectionRowStyle}>
-              <Heading level={2}>
-                Height :
-                <span css={textStyle}>
-                  {`${height ? height + '"' : "unknown"}`}
-                </span>
-              </Heading>
-            </section>
-            <section className="pokemon-weight" css={sectionRowStyle}>
-              <Heading level={2}>
-                Weight :
-                <span css={textStyle}>
-                  {`${weight ? weight + " lbs" : "unknown"}`}
-                </span>
-              </Heading>
-            </section>
-          </main>
-        </div>
-        <Card
-          css={cardStyle}
-          cssContent={cardContentStyle}
-          withBorder
-          withShadow
-        >
+      <section className="pokemon-image" css={imageStyle}>
+        <If condition={!isCatched || isCatched}>
+          <Image
+            className="image"
+            src={profileImage}
+            alt={name}
+            width={500}
+            height={500}
+          />
+        </If>
+        <span className="shadow"></span>
+      </section>
+      <Card css={cardStyle} cssContent={cardContentStyle} withBorder withShadow>
+        <div css={detailsStyle}>
+          <div css={profileStyle}>
+            <header css={headerStyle}>
+              <section css={topStyle}>
+                <section className="pokemon-name" css={sectionRowStyle}>
+                  <span css={headingStyle}>
+                    {`#${String(id).padStart(3, "0")}`}
+                  </span>
+                  <Heading level={1} css={headingStyle}>
+                    {name}
+                  </Heading>
+                </section>
+                <section className="pokemon-add" css={sectionCenterStyle}>
+                  <PokemonAdd pokemon={pokemon} />
+                </section>
+              </section>
+            </header>
+            <main css={mainStyle}>
+              <section css={topStyle}>
+                <section className="pokemon-type" css={sectionRowStyle}>
+                  <Heading level={2}>Type :</Heading>
+                  <PokemonTypeList pokemonTypes={types} />
+                </section>
+                <section className="pokemon-height" css={sectionRowStyle}>
+                  <Heading level={2}>
+                    Height :
+                    <span css={textStyle}>
+                      {`${height ? height + '"' : "unknown"}`}
+                    </span>
+                  </Heading>
+                </section>
+                <section className="pokemon-weight" css={sectionRowStyle}>
+                  <Heading level={2}>
+                    Weight :
+                    <span css={textStyle}>
+                      {`${weight ? weight + " lbs" : "unknown"}`}
+                    </span>
+                  </Heading>
+                </section>
+              </section>
+            </main>
+          </div>
           <div css={topLeftStyle}>
             <section className="pokemon-experience" css={sectionRowStyle}>
               <Heading level={2} css={headingStyle}>
@@ -238,8 +244,8 @@ const PokemonDetails = ({ pokemon }) => {
               <PokemonMoveList pokemonMoves={moves} />
             </section>
           </div>
-        </Card>
-      </div>
+        </div>
+      </Card>
     </If>
   )
 }

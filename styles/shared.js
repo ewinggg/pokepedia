@@ -17,7 +17,7 @@ export const flexCenterStyle = css`
 `
 
 export const boxShadowStyle = css`
-  box-shadow: 9px 10px 0 var(--light-blue);
+  box-shadow: 10px 10px 0 var(--dark-green);
 `
 
 export const textShadowStyle = css`
@@ -25,7 +25,7 @@ export const textShadowStyle = css`
 `
 
 export const thickBorderStyle = css`
-  border: 4px solid var(--dark-black);
+  border: 4px solid var(--dark-green);
 `
 
 export const thinBorderStyle = css`
@@ -42,19 +42,20 @@ export const buttonLabelStyle = css`
   ${bigTextStyle}
   ${flexCenterStyle}
   ${textShadowStyle}
-  margin: 6px -10px 5px 20px;
+  margin: 5px 5px 5px 5px;
 `
 
 export const buttonStyle = css`
   ${boxShadowStyle}
-  ${thinBorderStyle}
+  ${thickBorderStyle}
+  ${borderRadius}
+  width: 100%;
   background-color: var(--dark-white);
-  padding: 0;
+  padding: 5px;
   cursor: pointer;
   transition: all 0.25s;
   &:active {
     box-shadow: none;
-    transform: skew(-5deg) translateX(5px);
   }
 `
 

@@ -37,12 +37,6 @@ const rotate = keyframes`
 const cardContentStyle = css`
   ${flexCenterStyle}
   margin: 5px;
-  // &:hover svg {
-  //   animation: ${rotate} ease-in-out 0.5s;
-  //   animation-delay: 0.05s;
-  //   animation-iteration-count: inherit;
-  //   transform-origin: 50% 50%;
-  // }
 `
 
 const cardStyle = css`

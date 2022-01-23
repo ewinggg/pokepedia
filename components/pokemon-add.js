@@ -5,6 +5,7 @@ import Image from "next/image"
 import PropTypes from "prop-types"
 import { useState } from "react"
 import If from "./if"
+import Pokeball from "./pokeball"
 import useCachedImage from "../hooks/useCachedImage"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
@@ -131,7 +132,9 @@ const PokemonAdd = ({ pokemon }) => {
   return (
     <>
       <button data-testid="add" css={buttonStyle} onClick={handleCatch}>
-        <span css={buttonLabelStyle}>Catch Pokémon</span>
+        <span css={buttonLabelStyle}>
+          <Pokeball /> Catch
+        </span>
       </button>
       <Dialog
         open={isDialogOpen}
