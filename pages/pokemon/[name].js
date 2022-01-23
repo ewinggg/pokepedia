@@ -1,5 +1,6 @@
 import { useAmp } from "next/amp"
 import Head from "next/head"
+import { useEffect } from "react"
 import If from "../../components/if"
 import PokemonDetails from "../../components/pokemon-details"
 import client from "../../graphql/client"

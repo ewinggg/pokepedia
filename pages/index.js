@@ -13,6 +13,7 @@ import { useAppContext } from "../state/context"
 import usePokemons from "../hooks/usePokemons"
 
 const Loading = dynamic(() => import("../components/loading"))
+const MessageBox = dynamic(() => import("../components/message-box"))
 
 // AMP configuration
 export const config = { amp: "hybrid" }
@@ -30,8 +31,6 @@ const Pokemons = ({ initialPokemons }) => {
   // Fetch another pokemons data in the client on scroll
   useInfiniteScroll(loading, getPokemons)
 
-  if (error) return `Error! ${error.message}`
-
   return (
     <>
       <Head>
@@ -41,9 +40,14 @@ const Pokemons = ({ initialPokemons }) => {
           content="Managed and distributed by Oak Pokémon Research Lab"
         />
       </Head>
-      <PokemonList pokemons={pokemons} />
-      <If condition={loading}>
-        <Loading />
+      <If condition={error}>
+        <MessageBox message={`Error! ${error.message}`} />
+      </If>
+      <If condition={!error}>
+        <PokemonList pokemons={pokemons} />
+        <If condition={loading}>
+          <Loading />
+        </If>
       </If>
     </>
   )
