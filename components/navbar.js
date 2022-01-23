@@ -4,6 +4,7 @@ import Item from "./item"
 import List from "./list"
 import routes from "../utils/routes"
 import { css, keyframes } from "@emotion/react"
+import media from "../styles/media"
 import {
   bigTextStyle,
   buttonTextStyle,
@@ -61,6 +62,10 @@ const iconStyle = css`
 
 const listStyle = css`
   gap: 50px;
+  ${media.xs} {
+    flex-direction: column;
+    gap: 25px;
+  }
 `
 
 const routeStyle = css`

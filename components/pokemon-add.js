@@ -28,6 +28,7 @@ const errorStyle = css`
 const headingStyle = css`
   ${bigTextStyle}
   font-weight: 700;
+  text-align: center;
 `
 
 const inputStyle = css`
@@ -41,6 +42,10 @@ const inputStyle = css`
     height: 100%;
     font-size: 20px;
     font-weight: 700;
+    max-width: 183px;
+    ${media.sm} {
+      max-width: unset;
+    }
   }
   & input:focus {
     outline: none;
@@ -51,6 +56,7 @@ const sectionStyle = css`
   ${flexCenterStyle}
   flex-direction: column;
   gap: 15px;
+  text-align: center;
 `
 
 const PokemonAdd = ({ pokemon }) => {
@@ -159,7 +165,12 @@ const PokemonAdd = ({ pokemon }) => {
               <If condition={errorMessage !== ""}>{errorMessage}</If>
             </Heading>
             <div css={[inputStyle, errorMessage && errorStyle]}>
-              <input value={nickname} onChange={handleNickname} autoFocus />
+              <input
+                value={nickname}
+                onChange={handleNickname}
+                autoFocus
+                maxLength={15}
+              />
             </div>
           </section>
         </If>

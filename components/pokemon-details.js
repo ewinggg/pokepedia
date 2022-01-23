@@ -38,10 +38,11 @@ const cardContentStyle = css`
 `
 
 const cardStyle = css`
-  padding: 50px;
+  padding: 25px;
   flex: 3;
   ${media.lg} {
     ${borderRadius}
+    padding: 50px;
   }
 `
 
@@ -205,7 +206,7 @@ const PokemonDetails = ({ pokemon }) => {
           <div css={columnStyle}>
             <section className="pokemon-experience" css={sectionRowStyle}>
               <Heading level={2} css={headingStyle}>
-                Base Experience
+                Experience
                 <span css={textStyle}>{`(${base_experience})`}</span>
               </Heading>
             </section>

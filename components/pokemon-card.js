@@ -9,6 +9,7 @@ import PokemonDelete from "./pokemon-delete"
 import useColors from "../hooks/useColors"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
+import media from "../styles/media"
 import {
   borderRadius,
   overlapStyle,
@@ -23,6 +24,10 @@ const cardContentStyle = css`
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  ${media.xs} {
+    width: 50px;
+    height: 50px;
+  }
 `
 
 const cardStyle = css`
@@ -36,6 +41,9 @@ const cardStyle = css`
     transform: translateX(-5px) translateY(-5px);
     box-shadow: 25px 15px 15px #eceef9;
   }
+  ${media.xs} {
+    padding: 15px 15px 38px 15px;
+  }
 `
 
 const headingStyle = css`
@@ -44,6 +52,9 @@ const headingStyle = css`
   text-transform: uppercase;
   z-index: 1;
   ${textShadowStyle}
+  ${media.xs} {
+    font-size: 10px;
+  }
 `
 
 const mainStyle = css`
@@ -53,6 +64,10 @@ const mainStyle = css`
   gap: 13px;
   position: absolute;
   top: 30px;
+  ${media.xs} {
+    width: 50px;
+    top: 20px;
+  }
 `
 
 const miniCardContentStyle = css`
@@ -60,6 +75,9 @@ const miniCardContentStyle = css`
   display: inline-block;
   font-size: 12px;
   font-weight: 700;
+  ${media.xs} {
+    font-size: 9px;
+  }
 `
 
 const headerStyle = css`
@@ -75,7 +93,6 @@ const miniCardStyle = css`
   align-items: center;
   background-color: var(--bgColor);
   padding: 3px 5px;
-  z-index: 1;
   border: none;
   &.counter {
     ${thinBorderStyle}
