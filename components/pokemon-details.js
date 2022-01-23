@@ -2,9 +2,9 @@ import Image from "next/image"
 import PropTypes from "prop-types"
 import Card from "./card"
 import Heading from "../components/heading"
-import Pokeball from "./pokeball"
 import If from "./if"
 import { css, Global, keyframes } from "@emotion/react"
+import dynamic from "next/dynamic"
 import media from "../styles/media"
 import {
   borderRadius,
@@ -112,6 +112,10 @@ const topLeftStyle = css`
 const sectionCenterStyle = css`
   align-self: center;
 `
+
+const Pokeball = dynamic(() => import("./pokeball"), {
+  ssr: false,
+})
 
 const PokemonDetails = ({ pokemon }) => {
   const {

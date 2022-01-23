@@ -1,7 +1,8 @@
+import { useAmp } from "next/amp"
+import dynamic from "next/dynamic"
 import Head from "next/head"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import Dialog from "../components/dialog"
 import Heading from "../components/heading"
 import If from "../components/if"
 import MessageBox from "../components/message-box"
@@ -9,6 +10,9 @@ import PokemonList from "../components/pokemon-list"
 import useMounted from "../hooks/useMounted"
 import { useAppContext } from "../state/context"
 import { headingStyle, sectionStyle } from "../styles/shared"
+
+// Dynamic internal modules
+const Dialog = dynamic(() => import("../components/dialog"), { ssr: false })
 
 const Collection = () => {
   const router = useRouter()

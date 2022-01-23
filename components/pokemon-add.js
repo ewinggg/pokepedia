@@ -1,9 +1,8 @@
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import PropTypes from "prop-types"
 import { useState } from "react"
-import Heading from "./heading"
 import If from "./if"
-import Dialog from "./dialog"
 import useCachedImage from "../hooks/useCachedImage"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
@@ -45,6 +44,9 @@ const inputStyle = css`
     outline: none;
   }
 `
+
+const Dialog = dynamic(() => import("./dialog"), { ssr: false })
+const Heading = dynamic(() => import("./heading"), { ssr: false })
 
 const PokemonAdd = ({ pokemon }) => {
   const { dialogOpen, isCatched, ownedPokemons, dispatch } = useAppContext()
