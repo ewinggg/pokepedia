@@ -18,8 +18,10 @@ const buttonStyle = css`
   cursor: pointer;
   background-color: var(--dark-white);
   &:hover {
-    color: var(--light-blue);
+    color: var(--light-red);
   }
+  width: 120px;
+  height: 23px;
 `
 
 const PokemonDelete = ({ pokemon }) => {

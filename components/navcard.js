@@ -7,10 +7,10 @@ import { css } from "@emotion/react"
 const cardStyle = css`
   display: flex;
   box-shadow: 5px 5px 1px 4px var(--dark-green);
-  border-width: ${({ border }) => border && `${border}px`};
-  border-style: ${({ border }) => border && "solid"};
-  border-color: ${({ brColor }) => brColor ?? "var(--dark-green)"};
-  background-color: ${({ bgColor }) => bgColor ?? "var(--dark-white)"};
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--dark-green);
+  background-color: var(--dark-white);
   border-radius: 20px;
   padding-top: ${({ pt }) => pt && `${pt}px`};
   padding-right: ${({ pr }) => pr && `${pr}px`};

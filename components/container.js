@@ -31,7 +31,6 @@ const Container = forwardRef((props, ref) => {
 
   return (
     <div
-      className="container"
       data-testid="container"
       ref={ref}
       css={[containerStyle, css]}

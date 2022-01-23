@@ -149,6 +149,7 @@ const PokemonCard = ({ pokemon }) => {
               >
                 {`#${String(pokemon.id).padStart(3, "0")}`}
               </Card>
+
               <Card
                 className="counter"
                 css={miniCardStyle}
@@ -157,6 +158,7 @@ const PokemonCard = ({ pokemon }) => {
               >
                 {`Owned: ${0}`}
               </Card>
+
               <If condition={!isCollectionPage}>
                 <Card
                   className="counter"
@@ -167,6 +169,7 @@ const PokemonCard = ({ pokemon }) => {
                   {`Owned: ${owned}`}
                 </Card>
               </If>
+
               <If condition={isCollectionPage}>
                 <PokemonDelete pokemon={pokemon} />
               </If>
