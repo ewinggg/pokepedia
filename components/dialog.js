@@ -1,11 +1,9 @@
 import PropTypes from "prop-types"
-import { useEffect, useState } from "react"
 import Card from "./card"
 import Close from "./close"
 import If from "./if"
 import { css } from "@emotion/react"
 import Portal from "./portal"
-import useMounted from "../hooks/useMounted"
 import media from "../styles/media"
 import {
   buttonLabelStyle,
@@ -63,42 +61,36 @@ const Dialog = ({
   confirmText,
   open,
   withButtons,
-}) => {
-  const mounted = useMounted()
-
-  return (
-    <If condition={mounted && typeof window !== "undefined"}>
-      <Portal id="dialog">
-        <div css={[backdropStyle, open && openStyle]}>
-          <Card
-            data-testid="dialog"
-            css={cardStyle}
-            cssContent={cardContentStyle}
-            withBorder
-            withShadow
-          >
-            <button type="button" onClick={onCancel} css={buttonCloseStyle}>
-              <Close />
+}) => (
+  <Portal id="dialog">
+    <div css={[backdropStyle, open && openStyle]}>
+      <Card
+        data-testid="dialog"
+        css={cardStyle}
+        cssContent={cardContentStyle}
+        withBorder
+        withShadow
+      >
+        <button type="button" onClick={onCancel} css={buttonCloseStyle}>
+          <Close />
+        </button>
+        {children}
+        <If condition={withButtons}>
+          <section css={buttonsStyle}>
+            <button css={buttonStyle} onClick={onCancel}>
+              <span css={buttonLabelStyle}>{cancelText}</span>
             </button>
-            {children}
-            <If condition={withButtons}>
-              <section css={buttonsStyle}>
-                <button css={buttonStyle} onClick={onCancel}>
-                  <span css={buttonLabelStyle}>{cancelText}</span>
-                </button>
-                <button css={buttonStyle}>
-                  <span css={buttonLabelStyle} onClick={onConfirm}>
-                    {confirmText}
-                  </span>
-                </button>
-              </section>
-            </If>
-          </Card>
-        </div>
-      </Portal>
-    </If>
-  )
-}
+            <button css={buttonStyle}>
+              <span css={buttonLabelStyle} onClick={onConfirm}>
+                {confirmText}
+              </span>
+            </button>
+          </section>
+        </If>
+      </Card>
+    </div>
+  </Portal>
+)
 
 Dialog.defaultProps = {
   cancelText: "Cancel",
