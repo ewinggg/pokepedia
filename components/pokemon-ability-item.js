@@ -8,16 +8,6 @@ import Item from "./item"
 import { css } from "@emotion/react"
 import { borderRadius, thinBorderStyle } from "../styles/shared"
 
-const itemStyle = css`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`
-
-const statStyle = css`
-  justify-content: space-between;
-`
-
 const cardStyle = css`
   ${borderRadius}
   ${thinBorderStyle}

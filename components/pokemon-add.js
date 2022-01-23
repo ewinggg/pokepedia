@@ -151,19 +151,17 @@ const PokemonAdd = ({ pokemon }) => {
         </If>
         <If condition={isCatched}>
           <Heading level={1} css={headingStyle}>
-            You got the Pokémon!
+            You caught a Pokemon!
           </Heading>
           <section css={sectionStyle}>
             <Image src={image} alt={pokemon.name} width={100} height={100} />
             <Heading level={2}>
-              {`${nickname ? nickname + " The " : ""} ${pokemon.name}`}
+              {`${nickname ? nickname + " - " : ""} ${pokemon.name}`}
             </Heading>
           </section>
           <section css={sectionStyle}>
             <Heading level={3} css={inputHeadingStyle}>
-              <If condition={errorMessage === ""}>
-                Give your new Pokémon a nickname!
-              </If>
+              <If condition={errorMessage === ""}>Give a nickname</If>
               <If condition={errorMessage !== ""}>{errorMessage}</If>
             </Heading>
             <div css={[inputStyle, errorMessage && errorStyle]}>

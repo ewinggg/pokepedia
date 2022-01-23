@@ -1,5 +1,3 @@
-import Pokeball from "../components/pokeball"
-import World from "../components/world"
 import { GiSchoolBag, GiWorld } from "react-icons/gi"
 
 const routes = [

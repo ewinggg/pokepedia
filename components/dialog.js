@@ -7,6 +7,7 @@ import If from "./if"
 import { css } from "@emotion/react"
 import Portal from "./portal"
 import {
+  borderRadius,
   buttonLabelStyle,
   buttonsStyle,
   buttonStyle,
@@ -34,6 +35,7 @@ const buttonCloseStyle = css`
   right: -10px;
   cursor: pointer;
 `
+
 const cardContentStyle = css`
   ${flexCenterStyle}
   flex-direction: column;
@@ -42,6 +44,7 @@ const cardContentStyle = css`
 `
 
 const cardStyle = css`
+  ${borderRadius}
   ${dialogStyle}
   ${flexCenterStyle}
   position: fixed;

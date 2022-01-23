@@ -5,15 +5,9 @@ import NavCard from "./navcard"
 import Item from "./item"
 import List from "./list"
 import routes from "../utils/routes"
-import { css, keyframes } from "@emotion/react"
+import { css } from "@emotion/react"
 import media from "../styles/media"
-import {
-  bigTextStyle,
-  buttonTextStyle,
-  flexCenterStyle,
-  textShadowStyle,
-  thinBorderStyle,
-} from "../styles/shared"
+import { flexCenterStyle, thinBorderStyle } from "../styles/shared"
 
 const iconColor = css`
   color: var(--dark-green);
@@ -23,15 +17,6 @@ const baseRouteStyle = css`
   font-weight: 600;
   color: var(--dark-black);
   text-transform: uppercase;
-`
-
-const rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-720deg);
-  }
 `
 
 const cardContentStyle = css`
