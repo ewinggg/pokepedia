@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokepedia
 
-## Getting Started
+![Logo](public/logo.png)
 
-First, run the development server:
+A pokedex web app built with Next.js.
+Managed and distributed by Oak Pokémon Research Lab in Surabaya.
+
+## Screenshots
+
+![App Screenshot](https://drive.google.com/file/d/1mRNE77U39Vs0tIMh0-prfj2hW6gO2q0Q/view?usp=sharing)
+![App Screenshot](https://drive.google.com/file/d/1yL9oxa6VDhrKJ1A-jVEq-RjoTfgPuJG2/view?usp=sharing)
+![App Screenshot](https://drive.google.com/file/d/1JIL3f4cSwHrdu4ATqlbhkoO6lO51zHng/view?usp=sharing)
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/ewinggg/pokepedia
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  cd pokepedia
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Install dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm install
+```
 
-## Learn More
+Start the development server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Running Tests
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run tests, run the following command
 
-## Deploy on Vercel
+```bash
+  npm test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Built Using
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Create Next App 🧑‍💻 to initialize project.
+- Emotion.sh 💄 CSS in JS.
+- Apollo 🚀 Graphql Client.
+- Jest & react testing-library 🔬 for testing.
+- Written in Javascript 😌.
+- Hosted on Vercel 🎊.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+Pokémon © 2002-2021 Pokémon. © 1995-2021 Nintendo/Creatures Inc./GAME FREAK inc. TM, ® and Pokémon character names are trademarks of Nintendo.
