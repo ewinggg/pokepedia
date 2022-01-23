@@ -33,10 +33,9 @@ const cardContentStyle = css`
 
 const cardStyle = css`
   ${borderRadius}
-  padding: 25px 25px 70px 25px;
   background-color: white;
   transition: all 0.25s;
-  padding: 25px 25px 70px 25px;
+  padding: 25px 25px 90px 25px;
   box-shadow: 0px 10px 10px 5px #eceef9;
   &:hover {
     transform: translateX(-5px) translateY(-5px);
@@ -194,9 +193,9 @@ const PokemonCard = ({ pokemon }) => {
               <Heading level={2} css={headingStyle}>
                 <span>
                   <If condition={pokemon.nickname !== undefined}>
-                    {`${pokemon.nickname} The `}
+                    {`${pokemon.nickname} -`}
                   </If>
-                  {pokemon.name}
+                  <div>{pokemon.name}</div>
                 </span>
               </Heading>
             </main>
