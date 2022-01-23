@@ -5,8 +5,7 @@ import PropTypes from "prop-types"
 import Card from "./card"
 import Heading from "../components/heading"
 import If from "./if"
-import { css, Global, keyframes } from "@emotion/react"
-import dynamic from "next/dynamic"
+import { css, Global } from "@emotion/react"
 import media from "../styles/media"
 import {
   borderRadius,
@@ -26,17 +25,6 @@ import useColors from "../hooks/useColors"
 const bottomRightStyle = css`
   ${columnStyle}
   flex: 1;
-`
-
-const cardContentStyle = css`
-  ${columnStyle}
-  width: 100%;
-  ${media.lg} {
-    ${borderRadius}
-  }
-  ${media.sm} {
-    ${rowStyle}
-  }
 `
 
 const cardStyle = css`
@@ -125,10 +113,6 @@ const sectionCenterStyle = css`
   align-self: center;
 `
 
-const Pokeball = dynamic(() => import("./pokeball"), {
-  ssr: false,
-})
-
 const PokemonDetails = ({ pokemon }) => {
   const {
     id,
@@ -150,20 +134,8 @@ const PokemonDetails = ({ pokemon }) => {
   const image = useCachedImage(name, initialImage)
   const profileImage = image ?? sprites.front_default
 
-  // Get random color based on pokemon id
-  const flag = id % 3
-  const { light } = useColors(flag)
-
-  // Set body color dynamically based on pokemon id
-  const bodyStyle = css`
-    body {
-      background-color: white;
-    }
-  `
-
   return (
     <If condition={pokemon && typeof pokemon === "object"}>
-      <Global styles={bodyStyle} />
       <section className="pokemon-image" css={imageStyle}>
         <If condition={!isCatched || isCatched}>
           <Image
@@ -176,7 +148,7 @@ const PokemonDetails = ({ pokemon }) => {
         </If>
         <span className="shadow"></span>
       </section>
-      <Card css={cardStyle} cssContent={cardContentStyle} withBorder withShadow>
+      <Card css={cardStyle} withBorder withShadow>
         <div css={detailsStyle}>
           <div css={profileStyle}>
             <header css={headerStyle}>
@@ -197,12 +169,12 @@ const PokemonDetails = ({ pokemon }) => {
             <main css={mainStyle}>
               <section css={topStyle}>
                 <section className="pokemon-type" css={sectionRowStyle}>
-                  <Heading level={2}>Type :</Heading>
+                  <Heading level={2}>Type:</Heading>
                   <PokemonTypeList pokemonTypes={types} />
                 </section>
                 <section className="pokemon-height" css={sectionRowStyle}>
                   <Heading level={2}>
-                    Height :
+                    Height:
                     <span css={textStyle}>
                       {`${height ? height + '"' : "unknown"}`}
                     </span>
@@ -210,7 +182,7 @@ const PokemonDetails = ({ pokemon }) => {
                 </section>
                 <section className="pokemon-weight" css={sectionRowStyle}>
                   <Heading level={2}>
-                    Weight :
+                    Weight:
                     <span css={textStyle}>
                       {`${weight ? weight + " lbs" : "unknown"}`}
                     </span>
