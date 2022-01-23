@@ -19,6 +19,7 @@ import PokemonStatList from "./pokemon-stat-list"
 import PokemonTypeList from "./pokemon-type-list"
 import { useAppContext } from "../state/context"
 import useCachedImage from "../hooks/useCachedImage"
+import useMounted from "../hooks/useMounted"
 import useColors from "../hooks/useColors"
 
 const bottomRightStyle = css`
@@ -126,6 +127,8 @@ const PokemonDetails = ({ pokemon }) => {
   // Get state from context
   const { isCatched } = useAppContext()
 
+  const mounted = useMounted()
+
   // Set profile image from cached or request
   const image = useCachedImage(name, initialImage)
   const profileImage = image ?? sprites.front_default
@@ -142,7 +145,7 @@ const PokemonDetails = ({ pokemon }) => {
   `
 
   return (
-    <If condition={pokemon && typeof pokemon === "object"}>
+    <If condition={pokemon && typeof pokemon === "object" && mounted}>
       <Global styles={bodyStyle} />
       <div css={profileStyle}>
         <div css={topLeftStyle}>

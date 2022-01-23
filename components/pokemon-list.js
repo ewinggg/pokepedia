@@ -1,5 +1,7 @@
 import Dialog from "./dialog"
 import Heading from "./heading"
+import Image from "next/image"
+import { useRouter } from "next/router"
 import PropTypes from "prop-types"
 import If from "./if"
 import List from "./list"
@@ -8,7 +10,7 @@ import { css } from "@emotion/react"
 import media from "../styles/media"
 import { releasePokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
-import { bigTextStyle } from "../styles/shared"
+import { bigTextStyle, flexCenterStyle } from "./styles/shared"
 
 const headingStyle = css`
   ${bigTextStyle}
@@ -22,8 +24,19 @@ const listStyle = css`
   }
 `
 
+const sectionStyle = css`
+  ${flexCenterStyle}
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+`
+
 const PokemonList = ({ pokemons }) => {
+  const router = useRouter()
+  const isCollectionPage = router?.pathname === "/collection"
+
   const { dialogOpen, selectedPokemon, dispatch } = useAppContext()
+  const { nickname, name, image } = selectedPokemon ?? {}
 
   // Handle close dialog
   const handleClose = (event) => {
@@ -52,17 +65,25 @@ const PokemonList = ({ pokemons }) => {
           ))
         }
       </List>
-      <Dialog
-        open={dialogOpen}
-        onCancel={handleClose}
-        cancelText="Keep"
-        onConfirm={handleRelease}
-        confirmText="Release"
-      >
-        <Heading level={1} css={headingStyle}>
-          Are you sure to release this adorable Képomon?
-        </Heading>
-      </Dialog>
+      <If condition={isCollectionPage && selectedPokemon !== null}>
+        <Dialog
+          open={dialogOpen}
+          onCancel={handleClose}
+          cancelText="Keep"
+          onConfirm={handleRelease}
+          confirmText="Release"
+        >
+          <Heading level={1} css={headingStyle}>
+            Are you sure to release this adorable Képomon?
+          </Heading>
+          <section css={sectionStyle}>
+            <Image src={image} alt={name} width={100} height={100} />
+            <Heading level={2}>
+              {`${nickname ? nickname + " The " : ""} ${name}`}
+            </Heading>
+          </section>
+        </Dialog>
+      </If>
     </If>
   )
 }

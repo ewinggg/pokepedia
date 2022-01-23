@@ -5,6 +5,7 @@ import Close from "./close"
 import If from "./if"
 import { css } from "@emotion/react"
 import Portal from "./portal"
+import useMounted from "../hooks/useMounted"
 import media from "../styles/media"
 import {
   buttonLabelStyle,
@@ -63,8 +64,7 @@ const Dialog = ({
   open,
   withButtons,
 }) => {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  const mounted = useMounted()
 
   return (
     <If condition={mounted && typeof window !== "undefined"}>
