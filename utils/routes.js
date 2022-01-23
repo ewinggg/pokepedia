@@ -7,13 +7,13 @@ const routes = [
     id: 1,
     path: "/",
     name: "Pokemons",
-    icon: <GiWorld size={50} />,
+    icon: <GiWorld size={37} />,
   },
   {
     id: 2,
     path: "/collection",
     name: "My Bag",
-    icon: <GiSchoolBag size={50} />,
+    icon: <GiSchoolBag size={37} />,
   },
 ]
 

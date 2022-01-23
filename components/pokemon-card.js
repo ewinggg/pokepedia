@@ -40,7 +40,7 @@ const cardStyle = css`
   box-shadow: 0px 10px 10px 5px #eceef9;
   &:hover {
     transform: translateX(-5px) translateY(-5px);
-    box-shadow: 25px 15px 15px #eceef9;
+    box-shadow: 25px 15px 10px #eceef9;
   }
   ${media.xs} {
     padding: 15px 15px 38px 15px;

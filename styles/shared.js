@@ -29,7 +29,7 @@ export const thickBorderStyle = css`
 `
 
 export const thinBorderStyle = css`
-  border: 2px solid var(--dark-black);
+  border: 2px solid var(--dark-green);
 `
 
 export const overlapStyle = css`
