@@ -9,19 +9,18 @@ const AppProvider = ({ children }) => {
     isCatched: false,
     dialogOpen: false,
     ownedPokemons: [],
-    selectedPokemon: {},
+    selectedPokemon: null,
   }
 
-  // Create persisted `ownedPokemons`
+  // Create persisted state
   const isClient = typeof window !== "undefined"
-  const cachedPokemons = isClient ? localStorage.getItem("pokemons") : null
-  const ownedPokemons = JSON.parse(cachedPokemons) ?? []
-  const localState = { ...initialState, ownedPokemons }
+  const cachedState = isClient ? localStorage.getItem("pokepedia-state") : null
+  const localState = JSON.parse(cachedState)
 
   const [state, dispatch] = useReducer(appReducer, localState || initialState)
 
   useEffect(() => {
-    localStorage.setItem("pokemons", JSON.stringify(state.ownedPokemons))
+    localStorage.setItem("pokepedia-state", JSON.stringify(state))
   }, [state])
 
   return (
