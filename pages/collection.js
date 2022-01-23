@@ -61,8 +61,8 @@ const Collection = () => {
       <If condition={mounted}>
         <If condition={ownedPokemons.length === 0}>
           <MessageBox
-            message="Let's catch your first Pokemon!"
-            clickText="Catch Pokemon"
+            message="Bag is empty!"
+            clickText="Let's catch a Pokemon"
             onClick={handleHome}
           />
         </If>
