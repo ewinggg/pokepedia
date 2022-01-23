@@ -18,15 +18,38 @@ const globalStyles = css`
     text-decoration: none;
   }
 
+  /* Start custom progress bar */
+  progress::-webkit-progress-bar {
+    background-color: #efefef;
+    width: 100%;
+    border-radius: 20px;
+  }
+  progress {
+    background-color: #efefef;
+    height: 10px;
+    border-radius: 20px;
+  }
+  progress::-webkit-progress-value {
+    background-color: #0baa0e !important;
+    border-radius: 20px;
+  }
+  progress::-moz-progress-bar {
+    background-color: #efefef !important;
+  }
+  progress {
+    color: #efefef;
+  }
+  /*End custom progress bar*/
+
   /* Start custom scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
     background-color: var(--dark-white);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--dark-black);
+    background-color: var(--dark-green);
     border-radius: 5px;
   }
   /* End custom scrollbar */

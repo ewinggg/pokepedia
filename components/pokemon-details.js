@@ -43,6 +43,9 @@ const cardStyle = css`
   ${borderRadius}
   padding: 25px;
   flex: 3;
+  ${media.md} {
+    padding: 50px;
+  }
 `
 
 const detailsStyle = css`

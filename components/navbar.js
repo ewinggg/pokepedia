@@ -41,6 +41,7 @@ const cardContentStyle = css`
 
 const cardStyle = css`
   ${thinBorderStyle}
+  margin: 15px 0px 0px 0px;
   transition: all 0.25s;
   box-shadow: 10px 10px 0 var(--dark-green);
   &:active {
