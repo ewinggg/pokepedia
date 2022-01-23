@@ -25,7 +25,7 @@ const Collection = () => {
 
   const router = useRouter()
 
-  const { ownedPokemons, dialogOpen, selectedPokemon, dispatch } =
+  const { ownedPokemons, isDialogOpen, selectedPokemon, dispatch } =
     useAppContext()
   const { nickname, name, image } = selectedPokemon ?? {}
 
@@ -60,7 +60,7 @@ const Collection = () => {
       <If condition={mounted}>
         <If condition={ownedPokemons.length === 0}>
           <MessageBox
-            message="You have no Képomon yet!"
+            message="You have no Pokemon yet!"
             clickText="Catch one?"
             onClick={handleHome}
           />
@@ -70,7 +70,7 @@ const Collection = () => {
         </If>
         <If condition={selectedPokemon !== null}>
           <Dialog
-            open={dialogOpen}
+            open={isDialogOpen}
             onCancel={handleClose}
             cancelText="Keep"
             onConfirm={handleRelease}

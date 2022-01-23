@@ -40,10 +40,10 @@ const Pokemons = ({ initialPokemons }) => {
           content="Managed and distributed by Oak Pokémon Research Lab"
         />
       </Head>
-      <If condition={error}>
-        <MessageBox message={`Error! ${error.message}`} />
+      <If condition={typeof error !== "undefined"}>
+        <MessageBox message={`Error! ${error?.message}`} />
       </If>
-      <If condition={!error}>
+      <If condition={typeof error === "undefined"}>
         <PokemonList pokemons={pokemons} />
         <If condition={loading}>
           <Loading />

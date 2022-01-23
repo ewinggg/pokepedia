@@ -49,7 +49,7 @@ const Dialog = dynamic(() => import("./dialog"), { ssr: false })
 const Heading = dynamic(() => import("./heading"), { ssr: false })
 
 const PokemonAdd = ({ pokemon }) => {
-  const { dialogOpen, isCatched, ownedPokemons, dispatch } = useAppContext()
+  const { isDialogOpen, isCatched, ownedPokemons, dispatch } = useAppContext()
 
   // Get pokemon image from cached or request
   const initialImage = pokemon.image
@@ -132,7 +132,7 @@ const PokemonAdd = ({ pokemon }) => {
         <span css={buttonLabelStyle}>Catch Pokémon</span>
       </button>
       <Dialog
-        open={dialogOpen}
+        open={isDialogOpen}
         onCancel={handleClose}
         cancelText="Release"
         onConfirm={handleAdopt}
