@@ -4,7 +4,6 @@ import List from "./list"
 import PokemonItem from "./pokemon-item"
 import { css } from "@emotion/react"
 import media from "../styles/media"
-import { bigTextStyle, flexCenterStyle } from "./styles/shared"
 
 const listStyle = css`
   ${media.sm} {
