@@ -14,7 +14,7 @@ const iconColor = css`
 `
 
 const baseRouteStyle = css`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--dark-black);
   text-transform: uppercase;

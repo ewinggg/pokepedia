@@ -35,7 +35,7 @@ const cardStyle = css`
   ${borderRadius}
   background-color: white;
   transition: all 0.25s;
-  padding: 25px 25px 90px 25px;
+  padding: 20px 20px 90px 20px;
   box-shadow: 0px 10px 10px 5px #eceef9;
   &:hover {
     transform: translateX(-5px) translateY(-5px);
