@@ -5,7 +5,6 @@ import Heading from "./heading"
 import If from "./if"
 import Dialog from "./dialog"
 import useCachedImage from "../hooks/useCachedImage"
-import { adoptPokemon, catchPokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { css } from "@emotion/react"
 import media from "../styles/media"
@@ -59,27 +58,28 @@ const PokemonAdd = ({ pokemon }) => {
   const [nickname, setNickname] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
 
-  // Find out existing pokemon in store
-  const isAdoptedPokemon = (nickname) => {
-    const findPokemon = (pokemon) => pokemon.nickname === nickname
-    const pokemon = ownedPokemons.find(findPokemon)
-    const isAdopted = typeof pokemon !== "undefined"
-
-    return isAdopted
-  }
-
   // Set nickname based on user input
   const handleNickname = (event) => {
     const name = event.target.value
     setNickname(name)
   }
 
-  const handleAdopt = () => {
+  const handleAdopt = async () => {
+    // Find out existing pokemon in store
+    const isAdoptedPokemon = (nickname) => {
+      const findPokemon = (pokemon) => pokemon.nickname === nickname
+      const pokemon = ownedPokemons.find(findPokemon)
+      const isAdopted = typeof pokemon !== "undefined"
+
+      return isAdopted
+    }
+
     // Check wether the pokemon is already owned with the same nickname
     const isAdopted = isAdoptedPokemon(nickname)
 
     // Adopt new pokemon
     if (!isAdopted && nickname) {
+      const { adoptPokemon } = await import("../state/actions")
       const newPokemon = { ...pokemon, image, nickname }
       dispatch(adoptPokemon(newPokemon))
       handleClose()
@@ -97,25 +97,25 @@ const PokemonAdd = ({ pokemon }) => {
   }
 
   // Handle click for catching pokemon
-  const handleCatch = () => {
-    // Probability/Success rate
+  const handleCatch = async () => {
+    // Probability/Success rate to get pokemon
     const probability = (number) => Math.random() <= number
     const isCatched = probability(0.5)
 
+    const { catchPokemon, toggleDialog } = await import("../state/actions")
     dispatch(catchPokemon(isCatched))
     dispatch(toggleDialog())
   }
 
   // Handle close dialog
-  const handleClose = () => {
+  const handleClose = async () => {
     setNickname("")
     setErrorMessage("")
+
+    const { catchPokemon, toggleDialog } = await import("../state/actions")
     dispatch(catchPokemon(false))
     dispatch(toggleDialog())
   }
-
-  console.log("ownedPokemons", ownedPokemons)
-  console.log("errorMessage", errorMessage)
 
   return (
     <>

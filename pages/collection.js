@@ -7,7 +7,6 @@ import If from "../components/if"
 import MessageBox from "../components/message-box"
 import PokemonList from "../components/pokemon-list"
 import useMounted from "../hooks/useMounted"
-import { releasePokemon, toggleDialog } from "../state/actions"
 import { useAppContext } from "../state/context"
 import { headingStyle, sectionStyle } from "../styles/shared"
 
@@ -20,15 +19,17 @@ const Collection = () => {
   const mounted = useMounted()
 
   // Handle close dialog
-  const handleClose = (event) => {
+  const handleClose = async (event) => {
     event.preventDefault()
 
+    const { toggleDialog } = await import("../state/actions")
     dispatch(toggleDialog())
   }
 
-  const handleRelease = (event) => {
+  const handleRelease = async (event) => {
     event.preventDefault()
 
+    const { releasePokemon, toggleDialog } = await import("../state/actions")
     dispatch(releasePokemon(selectedPokemon))
     dispatch(toggleDialog())
   }
