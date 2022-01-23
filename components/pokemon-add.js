@@ -141,7 +141,7 @@ const PokemonAdd = ({ pokemon }) => {
         onCancel={handleClose}
         cancelText="Release"
         onConfirm={handleAdopt}
-        confirmText="Adopt"
+        confirmText="Save"
         withButtons={isCatched}
       >
         <If condition={!isCatched}>
