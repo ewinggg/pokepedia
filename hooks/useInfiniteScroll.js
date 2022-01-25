@@ -23,7 +23,7 @@ const useInfiniteScroll = (pokemons, loading, callback) => {
           offset: firstLoad === true ? perPage : (perPage += PER_PAGE),
         },
       })
-      firstLoad = false
+      firstLoad === true ? (firstLoad = false) : null
     }
   }
 
