@@ -10,17 +10,17 @@ import { PER_PAGE, VARIABLES as variables } from "../graphql/constants"
 
 const useInfiniteScroll = (pokemons, loading, callback) => {
   let firstLoad = true
-  let perPage = pokemons.length
+  let perPage = pokemons.length - PER_PAGE
 
   const scrollListener = () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement
 
     // Execute callback function when the conditions are met
-    if (!loading && scrollTop + clientHeight >= scrollHeight - 50) {
+    if (!loading && scrollTop + clientHeight >= scrollHeight) {
       callback({
         variables: {
           ...variables,
-          offset: firstLoad === true ? perPage : (perPage += PER_PAGE),
+          offset: firstLoad === true ? PER_PAGE : (perPage += PER_PAGE),
         },
       })
       firstLoad === true ? (firstLoad = false) : null
