@@ -9,7 +9,7 @@ import { PER_PAGE, VARIABLES as variables } from "../graphql/constants"
  */
 
 const useInfiniteScroll = (pokemons, loading, callback) => {
-  let loadCount = 0
+  let firstLoad = true
   let perPage = pokemons.length
 
   const scrollListener = () => {
@@ -20,10 +20,10 @@ const useInfiniteScroll = (pokemons, loading, callback) => {
       callback({
         variables: {
           ...variables,
-          offset: loadCount === 0 ? perPage : (perPage += PER_PAGE),
+          offset: firstLoad === true ? perPage : (perPage += PER_PAGE),
         },
       })
-      loadCount++
+      firstLoad = false
     }
   }
 
