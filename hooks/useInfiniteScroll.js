@@ -28,7 +28,6 @@ const useInfiniteScroll = (pokemons, loading, callback) => {
   useEffect(() => {
     // Add `scroll` event listener
     window.addEventListener("scroll", scrollListener)
-    // console.log(perPage)
 
     // Clean the even when unmounted
     return () => window.removeEventListener("scroll", scrollListener)
