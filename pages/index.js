@@ -29,7 +29,7 @@ const Pokemons = ({ initialPokemons }) => {
   const { loading, error, pokemons, getPokemons } = data
 
   // Fetch another pokemons data in the client on scroll
-  useInfiniteScroll(loading, getPokemons)
+  useInfiniteScroll(pokemons, loading, getPokemons)
 
   return (
     <>
