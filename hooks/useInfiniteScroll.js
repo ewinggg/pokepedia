@@ -16,7 +16,7 @@ const useInfiniteScroll = (pokemons, loading, callback) => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement
 
     // Execute callback function when the conditions are met
-    if (!loading && scrollTop + clientHeight >= scrollHeight) {
+    if (!loading && scrollHeight - scrollTop <= clientHeight + 50) {
       callback({
         variables: {
           ...variables,
