@@ -8,13 +8,16 @@ import { PER_PAGE, VARIABLES as variables } from "../graphql/constants"
  * @param {Function} callback The callback function to execute once reach the bottom of the viewport
  */
 
-const useInfiniteScroll = (pokemons, loading, callback) => {
+const useInfiniteScroll = (pokemons, totalPokemons, callback) => {
   let firstLoad = true
   let perPage = pokemons.length - PER_PAGE
 
   const scrollListener = () => {
     // Execute callback function when the conditions are met
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      totalPokemons > pokemons.length
+    ) {
       callback({
         variables: {
           ...variables,

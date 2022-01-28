@@ -18,7 +18,7 @@ const MessageBox = dynamic(() => import("../components/message-box"))
 // AMP configuration
 export const config = { amp: "hybrid" }
 
-const Pokemons = ({ initialPokemons }) => {
+const Pokemons = ({ initialPokemons, totalPokemons }) => {
   const isAmp = useAmp()
   const { dispatch } = useAppContext()
   useEffect(() => dispatch(checkAmp(isAmp)), [])
@@ -29,7 +29,7 @@ const Pokemons = ({ initialPokemons }) => {
   const { loading, error, pokemons, getPokemons } = data
 
   // Fetch another pokemons data in the client on scroll
-  useInfiniteScroll(pokemons, loading, getPokemons)
+  useInfiniteScroll(pokemons, totalPokemons, getPokemons)
 
   return (
     <>
@@ -39,6 +39,10 @@ const Pokemons = ({ initialPokemons }) => {
           name="description"
           content="Managed and distributed by Oak Pokémon Research Lab"
         />
+        <meta
+          name="viewport"
+          content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no"
+        ></meta>
       </Head>
       <If condition={typeof error !== "undefined"}>
         <MessageBox message={`Error! ${error?.message}`} />
@@ -60,6 +64,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       initialPokemons: data.pokemons.results,
+      totalPokemons: data.pokemons.count,
     },
   }
 }
