@@ -10,7 +10,7 @@ const listStyle = css`
   flex-wrap: wrap;
   gap: 35px;
   padding: 0;
-  margin: 0;
+  margin: 10px 0 0 0;
   list-style: none;
 `
 

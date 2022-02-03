@@ -7,7 +7,6 @@ import PokemonList from "../components/pokemon-list"
 import client from "../graphql/client"
 import { VARIABLES as variables } from "../graphql/constants"
 import { GET_POKEMONS } from "../graphql/query"
-import useInfiniteScroll from "../hooks/useInfiniteScroll"
 import { checkAmp } from "../state/actions"
 import { useAppContext } from "../state/context"
 import usePokemons from "../hooks/usePokemons"
@@ -28,8 +27,14 @@ const Pokemons = ({ initialPokemons, totalPokemons }) => {
   const data = usePokemons(initialPokemons)
   const { loading, error, pokemons, getPokemons } = data
 
-  // Fetch another pokemons data in the client on scroll
-  useInfiniteScroll(pokemons, totalPokemons, getPokemons)
+  const loadMore = () => {
+    getPokemons({
+      variables: {
+        ...variables,
+        offset: pokemons.length,
+      },
+    })
+  }
 
   return (
     <>
@@ -48,7 +53,11 @@ const Pokemons = ({ initialPokemons, totalPokemons }) => {
         <MessageBox message={`Error! ${error?.message}`} />
       </If>
       <If condition={typeof error === "undefined"}>
-        <PokemonList pokemons={pokemons} />
+        <PokemonList
+          pokemons={pokemons}
+          handleLoadMore={loadMore}
+          totalPokemons={totalPokemons}
+        />
         <If condition={loading}>
           <Loading />
         </If>
